@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');*/
 
 :root {
     --p-scrollbar-width: 5px;
 
     /* ================== fonts ================== */
-    --primary-font-r: 'Onest', sans-serif;
-    --primary-font-b: 'Onest', sans-serif;
+    --primary-font-r: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --primary-font-b: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
     /* --font-{size}-{weight} */
     --font-10-r: normal 500 1.0rem/1 var(--primary-font-r);
@@ -34,9 +34,9 @@
 
 
     /* ================== other ================== */
-    --radius-s: .3rem;
-    --radius-m: .5rem;
-    --radius-l: 1rem;
+    --radius-s: 0.8rem;
+    --radius-m: 1.6rem;
+    --radius-l: 2.4rem;
     --radius-xl: 5rem;
     --radius-round: 50%;
 

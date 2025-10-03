@@ -4,7 +4,7 @@ import type { RendererElement, RendererNode, VNode } from 'vue';
 export const inputFieldPt = (instance?: VNode<RendererNode, RendererElement, InputTextProps>): InputTextPassThroughOptionType => {
   return {
     root: {
-      class: (!instance || !instance.props?.size) ? 'font-14-b' : instance.props.size === 'small' ? 'font-12-r' : 'font-18-b',
+      class: (!instance || !instance.props?.size) ? 'font-18-r' : instance.props.size === 'small' ? 'font-14-r' : 'font-20-b',
     },
   };
 };

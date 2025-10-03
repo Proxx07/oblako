@@ -12,12 +12,15 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
+    path: '/auth',
+    name: 'auth',
+    component: () => import('@/pages/AuthPage.vue'),
+  },
+
+  {
     path: '/example',
     name: 'example',
     component: () => import('@/pages/Example.vue'),
-    meta: {
-      layout: 'Default',
-    },
   },
 
   {

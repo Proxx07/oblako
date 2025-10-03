@@ -10,7 +10,7 @@ export const toggleButtonConfig = (): ToggleButtonDesignTokens => {
       lg: { padding: '.5rem' },
     },
     content: {
-      borderRadius: '.5rem',
+      borderRadius: '{formField.borderRadius}',
       padding: '0.7rem 1.2rem',
       sm: { padding: '0.4rem 1.2rem' },
       lg: { padding: '1rem 1.4rem' },

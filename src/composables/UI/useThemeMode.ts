@@ -10,13 +10,15 @@ export const useThemeMode = () => {
   const modes: ThemeMode[] = ['light', 'dark'];
 
   const setTheme = () => {
-    document.documentElement.classList.remove('app-dark');
+    document.documentElement.classList.add('app-dark');
+    /*
     if (themeMode.value === 'dark') {
       document.documentElement.classList.add('app-dark');
     }
     else {
       document.documentElement.classList.remove('app-dark');
     }
+    */
   };
 
   const modeModel = computed<ThemeMode>({

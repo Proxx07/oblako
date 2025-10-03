@@ -11,6 +11,13 @@ body {
     }
   }
 
+  .p-button {
+    transition: cubic-bezier(.4, 0, .2, 1) var(--transition-fast);
+    &:hover {
+      transform: scale(1.03) translateY(-3px);
+    }
+  }
+
   .p-button-icon-svg {
     font-size: 0 !important;
     svg {

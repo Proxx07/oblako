@@ -86,7 +86,7 @@ const customPreset = definePreset(Aura, {
 
     formField: {
       paddingX: '1.6rem',
-      paddingY: '2rem',
+      paddingY: '1.5rem',
       sm: {
         paddingX: '1rem',
         paddingY: '1.4rem',
@@ -108,19 +108,27 @@ const customPreset = definePreset(Aura, {
           borderColor: 'transparent',
           hoverBorderColor: 'var(--primary-200)',
           focusBorderColor: 'var(--primary-500)',
+          // @ts-expect-error next-line
+          focusRing: {
+            shadow: '0px 0px 0px 3px color-mix(in srgb, var(--primary-500), transparent 65%)',
+          },
         },
       },
 
       dark: {
         formField: {
-          background: '{zinc.900}',
+          background: '{neutral.800}',
           color: 'var(--white)',
           disabledColor: 'var(--white)',
           disabledBackground: '{zinc.800}',
-          placeholderColor: '{surface.600}',
-          borderColor: 'transparent',
+          placeholderColor: '{neutral.400}',
+          borderColor: 'color-mix(in srgb, var(--white), transparent 90%)',
           hoverBorderColor: 'var(--primary-800)',
           focusBorderColor: 'var(--primary-500)',
+          // @ts-expect-error next-line
+          focusRing: {
+            shadow: '0px 0px 0px 3px color-mix(in srgb, var(--primary-500), transparent 65%)',
+          },
         },
       },
     },
