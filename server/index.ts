@@ -5,6 +5,7 @@ import fetch from 'node-fetch';
 const handler = async (req: IncomingMessage | VercelRequest, res: ServerResponse | VercelResponse) => {
   try {
     // eslint-disable-next-line node/prefer-global/process
+    console.log(process.env.API_URL);
     const response = await fetch(`${process.env.API_URL}/api/1/access_token`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
