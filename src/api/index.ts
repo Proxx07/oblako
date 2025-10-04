@@ -6,7 +6,7 @@ import { useToastStore } from '@/store/toastsStore.ts';
 const $axios = axios.create();
 
 const fetchToken = async (): Promise<{ success: boolean }> => {
-  const response = await fetch('/api/token');
+  const response = await fetch('/token');
   return await response.json() as { success: boolean };
 };
 
