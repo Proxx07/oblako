@@ -5,11 +5,11 @@ import fetch from 'node-fetch';
 const handler = async (req: IncomingMessage | VercelRequest, res: ServerResponse | VercelResponse) => {
   try {
     // eslint-disable-next-line node/prefer-global/process
-    const response = await fetch(`${process.env.VITE_API_URL}/api/1/access_token`, {
+    const response = await fetch(`${process.env.API_URL}/api/1/access_token`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       // eslint-disable-next-line node/prefer-global/process
-      body: JSON.stringify({ apiLogin: process.env.VITE_API_LOGIN }),
+      body: JSON.stringify({ apiLogin: process.env.API_LOGIN }),
     });
 
     const result = await response.json();
@@ -20,6 +20,7 @@ const handler = async (req: IncomingMessage | VercelRequest, res: ServerResponse
     (res as any).statusCode = 200;
     res.end(JSON.stringify({ success: true }));
   }
+  // eslint-disable-next-line unused-imports/no-unused-vars
   catch (e) {
     (res as any).statusCode = 500;
     res.end(JSON.stringify({ success: false }));
