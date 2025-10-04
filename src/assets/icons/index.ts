@@ -10,15 +10,17 @@ import forwardArrow from './forward-arrow.svg?raw';
 import history from './history.svg?raw';
 import home from './home.svg?raw';
 import loadingIcon from './loading.svg?raw';
+import logout from './logout.svg?raw';
 import marker from './marker.svg?raw';
 import mobile from './mobile.svg?raw';
 import phone from './phone.svg?raw';
 import profile from './profile.svg?raw';
-import qr from './qr.svg?raw';
 
+import qr from './qr.svg?raw';
 import reload from './reload.svg?raw';
 import user from './user.svg?raw';
 import users from './users.svg?raw';
+
 import uzcard from './uzcard.svg?raw';
 
 export {
@@ -33,6 +35,7 @@ export {
   history,
   home,
   loadingIcon,
+  logout,
   marker,
   mobile,
   phone,

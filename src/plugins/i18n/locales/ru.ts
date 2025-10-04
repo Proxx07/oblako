@@ -36,6 +36,8 @@ export default {
     reject: 'Отменить',
   },
 
+  logout: 'Вы действительно хотите выйти из аккаунта?',
+
   statuses: {
     approved: {
       title: 'Approved',

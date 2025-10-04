@@ -107,6 +107,8 @@ const toolbarPages = [
   display: flex;
   justify-content: space-around;
   gap: 1.2rem;
+  border-radius: var(--radius-l);
+  border: 1px solid rgba(66, 66, 66, 0.5);
   .toolbar-button {
     border: 0 !important;
     --p-button-sm-padding-x: 1.2rem;

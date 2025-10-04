@@ -21,6 +21,12 @@ export const useUserStore = defineStore('user-store', () => {
     phoneForRegistration.value = phone;
   };
 
+  const resetUserData = () => {
+    userInfo.value = undefined;
+    setStoredPhone('');
+    setRegistrationPhone('');
+  };
+
   return {
     userInfo,
     storedPhone,
@@ -28,5 +34,6 @@ export const useUserStore = defineStore('user-store', () => {
     setUserInfo,
     setStoredPhone,
     setRegistrationPhone,
+    resetUserData,
   };
 });

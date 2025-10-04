@@ -4,6 +4,7 @@ import { Card } from 'primevue';
 defineProps<{
   balance: number
   cardNumber: string
+  validThru: string
 }>();
 </script>
 
@@ -31,7 +32,7 @@ defineProps<{
           {{ cardNumber }}
         </div>
         <div class="font-14-r text-right">
-          12/26
+          {{ validThru }}
         </div>
       </div>
     </template>
