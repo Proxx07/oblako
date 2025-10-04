@@ -3,10 +3,6 @@
     {
       "source": "/api/:path*",
       "destination": "https://api-ru.iiko.services/api/:path*"
-    },
-    {
-      "source": "/token",
-      "destination": "https://api-ru.iiko.services/api/:path*"
     }
   ]
 }
