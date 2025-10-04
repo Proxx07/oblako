@@ -42,8 +42,11 @@ $axios.interceptors.response.use(
 
     if (error) {
       const message = error.response?.data && typeof error.response.data === 'string' ? error.response.data : error.message;
-      const $toast = useToastStore();
-      $toast.error(message);
+      const isErrorMessagePhone = (error?.response?.data as { message: string })?.message.includes('no user with phone');
+      if (!isErrorMessagePhone) {
+        const $toast = useToastStore();
+        $toast.error(message);
+      }
     }
 
     if (error?.response?.config.loading) error.response.config.loading.value = false;

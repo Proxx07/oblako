@@ -8,6 +8,18 @@
     --primary-font-b: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
     /* --font-{size}-{weight} */
+    --font-10-l: normal 400 1.0rem/1 var(--primary-font-r);
+    --font-12-l: normal 400 1.2rem/1 var(--primary-font-r);
+    --font-14-l: normal 400 1.4rem/1 var(--primary-font-r);
+    --font-16-l: normal 400 1.6rem/1 var(--primary-font-r);
+    --font-18-l: normal 400 1.8rem/1 var(--primary-font-r);
+    --font-20-l: normal 400 2.0rem/1 var(--primary-font-r);
+    --font-22-l: normal 400 2.2rem/1 var(--primary-font-r);
+    --font-24-l: normal 400 2.4rem/1 var(--primary-font-r);
+    --font-26-l: normal 400 2.6rem/1 var(--primary-font-r);
+    --font-28-l: normal 400 2.8rem/1 var(--primary-font-r);
+    --font-30-l: normal 400 3.0rem/1 var(--primary-font-r);
+
     --font-10-r: normal 500 1.0rem/1 var(--primary-font-r);
     --font-12-r: normal 500 1.2rem/1 var(--primary-font-r);
     --font-14-r: normal 500 1.4rem/1 var(--primary-font-r);
@@ -19,6 +31,8 @@
     --font-26-r: normal 500 2.6rem/1 var(--primary-font-r);
     --font-28-r: normal 500 2.8rem/1 var(--primary-font-r);
     --font-30-r: normal 500 3.0rem/1 var(--primary-font-r);
+
+    --font-36-r: normal 400 3.6rem/1 var(--primary-font-r);
 
     --font-10-b: normal 600 1.0rem/1 var(--primary-font-b);
     --font-12-b: normal 600 1.2rem/1 var(--primary-font-b);
@@ -55,6 +69,41 @@ html {
 .font-none {
     font-size: 0 !important;
 }
+
+.font-10-l {
+    font: var(--font-10-l) !important
+}
+.font-12-l {
+    font: var(--font-12-l) !important
+}
+.font-14-l {
+    font: var(--font-14-l) !important;
+}
+.font-16-l {
+    font: var(--font-16-l) !important;
+}
+.font-18-l {
+    font: var(--font-18-l) !important;
+}
+.font-20-l {
+    font: var(--font-20-l) !important;
+}
+.font-22-l {
+    font: var(--font-22-l) !important;
+}
+.font-24-l {
+    font: var(--font-24-l) !important;
+}
+.font-26-l {
+    font: var(--font-26-l) !important;
+}
+.font-28-l {
+    font: var(--font-28-l) !important;
+}
+.font-30-l {
+    font: var(--font-30-l) !important;
+}
+
 .font-10-r {
     font: var(--font-10-r) !important;
 }
@@ -87,6 +136,10 @@ html {
 }
 .font-30-r {
     font: var(--font-30-r) !important;
+}
+
+.font-36-r {
+    font: var(--font-36-r) !important;
 }
 
 .font-10-b {

@@ -2,6 +2,9 @@ import type { CardDesignTokens } from '@primeuix/themes/types/card';
 
 export const cardConfig = (): CardDesignTokens => {
   return {
+    root: {
+      borderRadius: 'var(--radius-l)',
+    },
     colorScheme: {
       light: {
         root: {
@@ -10,6 +13,7 @@ export const cardConfig = (): CardDesignTokens => {
       },
       dark: {
         root: {
+          background: '#000',
           color: 'var(--white)',
         },
       },

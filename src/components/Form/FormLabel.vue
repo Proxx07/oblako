@@ -32,8 +32,9 @@ const props = defineProps<{
 .form-label {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 1rem;
   width: 100%;
+  color: var(--secondary-900);
   label {
     font: var(--font-14-r);
     cursor: pointer;

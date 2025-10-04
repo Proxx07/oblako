@@ -7,6 +7,7 @@ export const buttonConfig = (): ButtonDesignTokens => {
     root: {
       paddingX: '2rem',
       paddingY: '1.8rem',
+      gap: '.4rem 1.2rem',
       sm: { paddingX: '.9rem', paddingY: '1.2rem' },
       lg: { paddingX: '1.6rem', paddingY: '2.4rem' },
       label: { fontWeight: 'unset' },

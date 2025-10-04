@@ -14,6 +14,13 @@ export const formRules = ($t: ComposerTranslation<MessageSchema>) => {
       if (+month > 12) return $t('rules.invalidDate');
       return true;
     },
+    fullName: (): FormRule<string> => (value: string) => {
+      if (!value) return $t('rules.required');
+      const nameArray = value.split(' ');
+      if (nameArray.length !== 3 || nameArray.some(str => !str)) return $t('rules.enterFullName');
+      return true;
+    },
+    email: (): FormRule<string> => (value: string) => /^[\w.%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i.test(value) || $t('rules.email'),
   };
 };
 

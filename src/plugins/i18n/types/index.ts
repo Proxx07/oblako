@@ -1,6 +1,6 @@
-import type en from '@/plugins/i18n/locales/en.ts';
+import type ru from '@/plugins/i18n/locales/ru.ts';
 
-export type MessageSchema = typeof en;
+export type MessageSchema = typeof ru;
 
 export type DeepKeyOf<TObj extends object> = {
   [K in keyof TObj & string]: TObj[K] extends object

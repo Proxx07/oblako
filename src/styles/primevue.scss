@@ -3,6 +3,23 @@ body {
     backdrop-filter: blur(3px);
   }
 
+  .p-dialog {
+    max-width: 375px;
+    width: 100%;
+
+    .p-dialog-title {
+      text-align: center;
+      color: var(--primary-500);
+      flex-grow: 1;
+      padding-left: 2.5rem;
+      font: var(--font-18-b);
+    }
+
+    .p-button-icon-only {
+      padding: 0;
+    }
+  }
+
   .confirmation-dialog {
     max-width: 36rem;
     width: 100%;
@@ -13,6 +30,9 @@ body {
 
   .p-button {
     transition: cubic-bezier(.4, 0, .2, 1) var(--transition-fast);
+    &.p-button-outlined {
+     background: color-mix(in oklab, currentColor 10%, transparent);
+    }
     &:hover {
       transform: scale(1.03) translateY(-3px);
     }
@@ -48,6 +68,13 @@ body {
 
   .p-toast-message-icon {
     margin-top: -0.1rem;
+  }
+
+  .p-card-body {
+    background: linear-gradient( to bottom right,
+                    color-mix(in oklab, #fff 10%, transparent) 0%,
+                    color-mix(in oklab, #ffeb3b 7%, transparent) 100%);
+    border-radius: var(--p-card-border-radius);
   }
 
   .p-select {
