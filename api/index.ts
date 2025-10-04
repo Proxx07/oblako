@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-// @ts-ignore
+// eslint-disable-next-line ts/ban-ts-comment
+// @ts-expect-error
 import tokenHandler from '../server/tokenHandler';
 
 export default (req: VercelRequest, res: VercelResponse) => {
