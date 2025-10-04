@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Button, Toast } from 'primevue';
+import { useRoute } from 'vue-router';
 import { contacts, history, home, profile } from '@/assets/icons';
 import ConfirmationModal from '@/components/UI/confirmations/ConfirmationModal.vue';
 import { useConfirmationsStore } from '@/store/confirmations';
@@ -7,7 +8,7 @@ import { useGlobalLoader } from '@/store/globalLoader.ts';
 
 const confirmationsStore = useConfirmationsStore();
 const globalLoaderStore = useGlobalLoader();
-
+const $route = useRoute();
 const toolbarPages = [
   { name: 'Главная', icon: home },
   { name: 'История', icon: history },
@@ -28,7 +29,7 @@ const toolbarPages = [
 
   <Toast />
 
-  <div class="toolbar">
+  <div v-if="$route.name === 'main'" class="toolbar">
     <Button
       v-for="page in toolbarPages"
       :key="page.name"
