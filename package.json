@@ -26,15 +26,16 @@
     "maska": "^3.2.0",
     "pinia": "^2.1.7",
     "primevue": "^4.3.6",
+    "qr-code-styling": "^1.9.2",
     "universal-cookie": "^8.0.1",
     "vue": "^3.4.21",
     "vue-i18n": "^11.1.10",
-    "vue-router": "^4.3.2",
-    "qr-code-styling": "^1.9.2"
+    "vue-router": "^4.3.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
     "@types/node": "^20.14.2",
+    "@vercel/node": "^5.3.24",
     "@vitejs/plugin-vue": "^5.0.4",
     "autoprefixer": "^10.4.19",
     "eslint": "^9.12.0",
