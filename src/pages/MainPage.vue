@@ -124,9 +124,6 @@ const logOut = async () => {
 </template>
 
 <style scoped lang="scss">
-.color-secondary {
-  color: var(--secondary-900)
-}
 .greeting {
   display: flex;
   gap: 1.2rem;

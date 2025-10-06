@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Button, Toast } from 'primevue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { contacts, history, home, profile } from '@/assets/icons';
 import ConfirmationModal from '@/components/UI/confirmations/ConfirmationModal.vue';
 import { useConfirmationsStore } from '@/store/confirmations';
@@ -9,11 +9,13 @@ import { useGlobalLoader } from '@/store/globalLoader.ts';
 const confirmationsStore = useConfirmationsStore();
 const globalLoaderStore = useGlobalLoader();
 const $route = useRoute();
+const $router = useRouter();
+
 const toolbarPages = [
-  { name: 'Главная', icon: home },
+  { name: 'Главная', icon: home, routerName: 'main' },
   { name: 'История', icon: history },
-  { name: 'Контакты', icon: contacts },
-  { name: 'Профиль', icon: profile }];
+  { name: 'Контакты', icon: contacts, routerName: 'contacts' },
+  { name: 'Профиль', icon: profile, routerName: 'profile' }];
 </script>
 
 <template>
@@ -29,19 +31,20 @@ const toolbarPages = [
 
   <Toast />
 
-  <div v-if="$route.name === 'main'" class="toolbar">
+  <div v-if="$route.name !== 'auth' && $route.name !== 'registration'" class="toolbar">
     <Button
       v-for="page in toolbarPages"
       :key="page.name"
       :label="page.name"
       :icon="page.icon"
-      :severity="page.name === 'Главная' ? 'primary' : 'secondary'"
+      :severity="$route.name === page.routerName ? 'primary' : 'secondary'"
       icon-pos="top"
       size="small"
-      :outlined="page.name === 'Главная'"
-      :text="page.name !== 'Главная'"
+      :outlined="$route.name === page.routerName"
+      :text="$route.name !== page.routerName"
       class="toolbar-button"
-      :class="[page.name === 'Главная' && 'doted']"
+      :class="[$route.name === page.routerName && 'doted']"
+      @click="() => page.routerName && $router.push({ name: page.routerName })"
     />
   </div>
 
