@@ -5,13 +5,13 @@ import VIcon from '@/components/UI/VIcon.vue';
 </script>
 
 <template>
-  <div class="contacts">
+  <div class="profile">
     <div class="top">
       <div class="font-24-r">
-        Контакты
+        Профиль
       </div>
       <div class="font-16-r color-secondary">
-        Свяжитесь с нами любым удобным способом
+        Управление аккаунтом и настройками
       </div>
     </div>
 
@@ -30,7 +30,7 @@ import VIcon from '@/components/UI/VIcon.vue';
 </template>
 
 <style scoped lang="scss">
-.contacts {
+.profile {
   display: flex;
   flex-direction: column;
   padding: 4rem 2.4rem 12rem;
