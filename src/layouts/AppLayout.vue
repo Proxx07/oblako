@@ -10,10 +10,11 @@ const confirmationsStore = useConfirmationsStore();
 const globalLoaderStore = useGlobalLoader();
 const $route = useRoute();
 const toolbarPages = [
-  { name: 'Главная', icon: home },
-  { name: 'История', icon: history },
-  { name: 'Контакты', icon: contacts },
-  { name: 'Профиль', icon: profile }];
+  { name: 'Главная', icon: home, link: '/' },
+  // { name: 'История', icon: history, link: 'history' },
+  { name: 'Контакты', icon: contacts, link: 'contacts' },
+  { name: 'Профиль', icon: profile, link: 'profile' },
+];
 </script>
 
 <template>
@@ -29,7 +30,7 @@ const toolbarPages = [
 
   <Toast />
 
-  <div v-if="$route.name === 'main'" class="toolbar">
+  <div v-if="$route.name === 'main' || $route.name === 'contacts'" class="toolbar">
     <Button
       v-for="page in toolbarPages"
       :key="page.name"
@@ -42,6 +43,7 @@ const toolbarPages = [
       :text="page.name !== 'Главная'"
       class="toolbar-button"
       :class="[page.name === 'Главная' && 'doted']"
+      @click="$router.push(page.name === 'Главная' ? '/' : `/${page.link.toLowerCase()}`)"
     />
   </div>
 
