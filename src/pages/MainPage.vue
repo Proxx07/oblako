@@ -2,7 +2,7 @@
 import { Button, Card, Dialog } from 'primevue';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { aim, calendar, delivery, logout, qr, users } from '@/assets/icons';
+import { calendar, delivery, logout, qr } from '@/assets/icons';
 import QrGenerator from '@/components/QrGenerator.vue';
 import CreditCard from '@/components/UI/CreditCard.vue';
 import VIcon from '@/components/UI/VIcon.vue';
@@ -17,8 +17,8 @@ const { show: showQr, open: openQr } = useToggle();
 const advantages = [
   { title: 'Резерв', text: 'Забронировать', icon: calendar, link: 'https://t.me/Oblacko_10' },
   { title: 'Доставка', text: 'Заказать домой', icon: delivery, link: 'https://eats.yandex.com/uz/r/oblako_1681733515?placeSlug=oblako' },
-  { title: 'Друзья', text: 'Мои друзья', icon: users },
-  { title: 'Лояльность', text: 'Правила бонусов', icon: aim },
+  // { title: 'Друзья', text: 'Мои друзья', icon: users },
+  // { title: 'Лояльность', text: 'Правила бонусов', icon: aim },
 ];
 
 const walletBalance = computed<number>(() => {

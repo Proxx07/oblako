@@ -19,6 +19,12 @@ export default {
     title: 'Регистрация',
     description: 'Создайте свой аккаунт OBLACKO',
     fio: 'ФИО',
+
+    name: 'Имя',
+    surName: 'Фамилия',
+    namePlaceholder: 'Иван',
+    surNamePlaceHolder: 'Иванов',
+
     fioPlaceHolder: 'Иванов Иван Иванович',
     birthDate: 'Дата рождения (ДД.ММ.ГГ)',
     sex: 'Пол',

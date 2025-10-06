@@ -63,6 +63,6 @@ onMounted(() => {
   margin-bottom: auto;
 }
 .page-bottom {
-  padding-bottom: 4rem;
+  padding-bottom: 10rem;
 }
 </style>

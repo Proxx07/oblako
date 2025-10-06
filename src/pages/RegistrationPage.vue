@@ -12,7 +12,7 @@ import { useRegistration } from '@/composables/useRegistration';
 import { sexOptions } from '@/composables/useRegistration/models';
 
 const { t } = useI18n();
-const { loading, fullName, birthDate, sex, email, phone, createCustomer } = useRegistration();
+const { loading, name, surName, birthDate, sex, email, phone, createCustomer } = useRegistration();
 const $router = useRouter();
 </script>
 
@@ -43,10 +43,16 @@ const $router = useRouter();
 
           <VForm class="form-wrapper" @submit-form="createCustomer">
             <VInputText
-              v-model="fullName"
-              :label="t('registration.fio')"
-              :placeholder="t('registration.fioPlaceHolder')"
-              :rules="[$formRules.fullName()]"
+              v-model="name"
+              :label="t('registration.name')"
+              :placeholder="t('registration.namePlaceholder')"
+              :rules="[$formRules.required()]"
+            />
+
+            <VInputText
+              v-model="surName"
+              :label="t('registration.surName')"
+              :placeholder="t('registration.surNamePlaceHolder')"
             />
 
             <VInputMask
@@ -79,7 +85,6 @@ const $router = useRouter();
               v-model="email"
               :label="t('registration.email')"
               placeholder="example@email.com"
-              :rules="[$formRules.email()]"
             />
 
             <VInputMask
