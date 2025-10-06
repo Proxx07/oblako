@@ -1,13 +1,13 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-export default async (req: VercelRequest, res: VercelResponse) => {
+export default async (_: VercelRequest, res: VercelResponse) => {
   try {
     // eslint-disable-next-line node/prefer-global/process
-    const response = await fetch(`${process.env.API_URL}/api/1/access_token`, {
+    const response = await fetch(`${process.env.VITE_API_URL}/api/1/access_token`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       // eslint-disable-next-line node/prefer-global/process
-      body: JSON.stringify({ apiLogin: process.env.API_LOGIN }),
+      body: JSON.stringify({ apiLogin: process.env.VITE_API_LOGIN }),
     });
 
     const result = await response.json();
