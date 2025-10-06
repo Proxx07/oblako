@@ -18,6 +18,12 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
+    path: '/contacts',
+    name: 'contacts',
+    component: () => import('@/pages/ContactsPage.vue'),
+  },
+
+  {
     path: '/auth',
     name: 'auth',
     component: () => import('@/pages/AuthPage.vue'),

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Button, Toast } from 'primevue';
 import { useRoute, useRouter } from 'vue-router';
-import { contacts, history, home, profile } from '@/assets/icons';
+import { contacts, home, profile } from '@/assets/icons';
 import ConfirmationModal from '@/components/UI/confirmations/ConfirmationModal.vue';
 import { useConfirmationsStore } from '@/store/confirmations';
 import { useGlobalLoader } from '@/store/globalLoader.ts';
@@ -13,7 +13,7 @@ const $router = useRouter();
 
 const toolbarPages = [
   { name: 'Главная', icon: home, routerName: 'main' },
-  { name: 'История', icon: history },
+  // { name: 'История', icon: history },
   { name: 'Контакты', icon: contacts, routerName: 'contacts' },
   { name: 'Профиль', icon: profile, routerName: 'profile' }];
 </script>

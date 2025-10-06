@@ -62,9 +62,9 @@ const logOut = async () => {
         <div class="font-24-r">
           Привет, {{ userStore.userInfo.name }}!
         </div>
-        <div class="font-16-r color-secondary">
+        <!-- <div class="font-16-r color-secondary">
           Добро пожаловать в OBLACKO
-        </div>
+        </div> -->
       </div>
       <Button :icon="logout" label="Выйти" size="small" icon-pos="right" severity="secondary" @click="logOut" />
     </div>
