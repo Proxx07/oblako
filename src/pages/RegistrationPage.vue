@@ -91,8 +91,8 @@ const $router = useRouter();
               v-model="phone"
               mask="+### ## ### ## ##"
               :label="t('registration.phoneNumber')"
-              disabled
-              readonly
+              :disabled="true"
+              :readonly="true"
             />
 
             <Button

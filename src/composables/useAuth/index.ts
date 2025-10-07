@@ -12,12 +12,14 @@ export const useAuth = () => {
   const userStore = useUserStore();
   const $router = useRouter();
 
-  const isPhoneValid = computed(() => phoneNumber.value.length === 12);
+  const modelPhoneNumber = computed(() => `998${phoneNumber.value}`);
+
+  const isPhoneValid = computed(() => modelPhoneNumber.value.length === 12);
 
   const getCustomerInfo = async () => {
     if (!isPhoneValid.value || loading.value) return;
     const { data, error }
-        = await $axios.post<IGuest>('/api/1/loyalty/iiko/customer/info', setPostBody(phoneNumber.value), { loading });
+        = await $axios.post<IGuest>('/api/1/loyalty/iiko/customer/info', setPostBody(modelPhoneNumber.value), { loading });
     if (!data || error) {
       userStore.setRegistrationPhone(phoneNumber.value);
       $router.push({ name: 'registration' });

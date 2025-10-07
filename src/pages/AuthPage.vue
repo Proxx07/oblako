@@ -35,15 +35,19 @@ const { loading, phoneNumber, getCustomerInfo } = useAuth();
             </div>
           </div>
 
-          <VInputMask
-            v-model="phoneNumber"
-            mask="+### ## ### ## ##"
-            placeholder="+998 ## ### ## ##"
-            unmask
-            :disabled="loading"
-            :pt="{ root: { inputmode: 'numeric' } }"
-            style="margin-top: 8px"
-          />
+          <div class="phone-input">
+            <div class="font-18-l">
+              +998
+            </div>
+            <VInputMask
+              v-model="phoneNumber"
+              mask="## ### ## ##"
+              placeholder="## ### ## ##"
+              unmask
+              :disabled="loading"
+              :pt="{ root: { inputmode: 'numeric' } }"
+            />
+          </div>
 
           <Button
             :label="t('auth.enter')"
@@ -65,6 +69,13 @@ const { loading, phoneNumber, getCustomerInfo } = useAuth();
 </template>
 
 <style scoped lang="scss">
+.phone-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
 .title {
   font: var(--font-36-r);
   color: var(--primary-500);
