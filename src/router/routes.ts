@@ -24,6 +24,15 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
+    path: '/privacy-policy',
+    name: 'privacy-policy',
+    component: () => import('@/pages/PrivacyPolicyPage.vue'),
+    meta: {
+      layout: 'Empty',
+    },
+  },
+
+  {
     path: '/auth',
     name: 'auth',
     component: () => import('@/pages/AuthPage.vue'),

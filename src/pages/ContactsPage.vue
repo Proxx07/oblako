@@ -31,7 +31,7 @@ const openLink = (url?: string) => {
         <div class="contacts">
           <Card v-for="c in contacts" :key="c.type" class="contact-item">
             <template #content>
-              <div class="row">
+              <div class="row" @click="openLink(c.link)">
                 <VIcon :icon="c.icon" :size="36" color="var(--primary-500)" />
                 <div class="details">
                   <div class="font-16-l">
@@ -41,7 +41,7 @@ const openLink = (url?: string) => {
                     {{ c.value }}
                   </div>
                 </div>
-                <Button text :icon="forwardArrow" class="action" @click="openLink(c.link)" />
+                <Button text :icon="forwardArrow" class="action"/>
               </div>
             </template>
           </Card>
@@ -179,7 +179,7 @@ const openLink = (url?: string) => {
 }
 
 .action {
-  margin-left: auto
+  margin-left: auto;
 }
 
 .days {

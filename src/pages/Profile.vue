@@ -217,8 +217,8 @@ const actions = [
       <Button class="logout-button" outlined severity="danger" label="Выйти из аккаунта" :icon="logout" @click="logOut" />
     </div>
 
-    <PrivacyPolicy v-model="privacyDialog" />
-    <LoyaltyRules v-model="loyaltyDialog" />
+    <PrivacyPolicy v-model="loyaltyDialog" />
+    <LoyaltyRules v-model="privacyDialog" />
   </PageWrapper>
 </template>
 

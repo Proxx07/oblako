@@ -24,7 +24,7 @@ export function useContactsPage() {
   const mapLinks = computed(() => [
     { name: '2GIS', link: 'https://2gis.uz/tashkent/firm/70000001040450175?m=69.27838%2C41.298384%2F18.08' },
     { name: 'Google Maps', link: 'https://maps.app.goo.gl/rwGJLGyvEjuLCS217' },
-    { name: 'Яндекс Карты', link: '#' },
+    { name: 'Яндекс Карты', link: 'https://yandex.uz/maps/org/63187332839/' },
     { name: 'TripAdvisor', link: 'https://www.tripadvisor.com/Restaurant_Review-g293968-d26670786-Reviews-Oblacko-Tashkent_Tashkent_Province.html' },
   ]);
 

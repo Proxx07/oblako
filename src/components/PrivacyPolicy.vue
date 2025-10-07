@@ -7,6 +7,10 @@ defineProps<{
   modelValue: boolean
 }>();
 
+const emits = defineEmits<{
+  (e: 'close'): void
+}>();
+
 const model = defineModel<boolean>('modelValue');
 
 const textJson = [
@@ -84,6 +88,7 @@ const textJson = [
     v-model:visible="model"
     modal
     class="full-dialog"
+    @hide="emits('close')"
   >
     <template #header>
       <div class="header">

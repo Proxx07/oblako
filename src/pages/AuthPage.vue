@@ -36,7 +36,7 @@ const { loading, phoneNumber, getCustomerInfo } = useAuth();
           </div>
 
           <div class="phone-input">
-            <div class="font-18-l">
+            <div class="font-18-l p-inputtext" style="color: var(--secondary-900); min-height: 56px; display: flex; align-items: center;">
               +998
             </div>
             <VInputMask
@@ -62,7 +62,10 @@ const { loading, phoneNumber, getCustomerInfo } = useAuth();
     </Card>
     <template #bottom>
       <div class="note font-14-l">
-        Продолжая, вы соглашаетесь с политикой конфиденциальности
+        Продолжая, вы соглашаетесь с
+      </div>
+      <div style="text-align: center;" class="font-14-l">
+        <a style="color: var(--primary-500);" @click="$router.push('/privacy-policy')">Политикой конфиденциальности</a>
       </div>
     </template>
   </PageWrapper>
