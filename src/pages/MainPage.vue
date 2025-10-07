@@ -77,7 +77,7 @@ const logOut = async () => {
       <Card v-for="item in advantages" :key="item.title" style="position:relative;">
         <template #content>
           <div style="padding: .5rem;">
-            <VIcon :icon="item.icon" color="var(--primary-500)" :size="31" style="margin-bottom: 1rem" />
+            <VIcon :icon="item.icon" color="var(--primary-500)" :size="32" style="margin-bottom: 1rem" />
             <div class="font-14-r">
               {{ item.title }}
             </div>
