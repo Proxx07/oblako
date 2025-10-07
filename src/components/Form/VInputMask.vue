@@ -14,7 +14,7 @@ const emit = defineEmits<IEmits<string>>();
 const { val, isMaskFieldCorrect, fieldValid, errorMessage } = useFormField<string, InputTextProps>(props, emit);
 
 const maska = {
-  mask: props.mask,
+  mask: props.readonly ? '' : props.mask,
   eager: true,
   tokens: {
     A: { pattern: /[A-Z]/, transform: (chr: string) => chr.toUpperCase() },
@@ -22,6 +22,7 @@ const maska = {
 };
 
 const maskInputHandler = (event: CustomEvent<MaskaDetail>) => {
+  if (props.readonly) return;
   val.value = props.unmask ? event.detail.unmasked : event.detail.masked;
   isMaskFieldCorrect.value = event.detail.completed;
 };
@@ -33,7 +34,9 @@ const maskInputHandler = (event: CustomEvent<MaskaDetail>) => {
       v-maska="maska"
       v-bind="{ ...props, ...$attrs }"
       :invalid="!fieldValid"
-      :disabled="loading"
+      :disabled="loading || props.disabled"
+      :readonly="props.readonly"
+      :class="{ 'color-secondary': props.readonly }"
       @maska="maskInputHandler"
     />
   </FormLabel>

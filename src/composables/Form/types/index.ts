@@ -14,7 +14,7 @@ export interface IFormField<V extends string | number> {
 }
 
 export type InputFieldProps<V extends string | number, P> = IFormField<V> & /* @vue-ignore */ P;
-export type InputMaskProps<T extends string, P> = InputFieldProps<T, P> & { mask: string, unmask?: boolean };
+export type InputMaskProps<T extends string, P> = InputFieldProps<T, P> & { mask: string, unmask?: boolean, disabled?: boolean, readonly?: boolean };
 
 export interface IEmits<T> {
   (e: 'update:modelValue', value: T): void

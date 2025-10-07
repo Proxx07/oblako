@@ -45,6 +45,7 @@ export const useRegistration = () => {
 
   const activateEdit = () => {
     edit.value = true;
+    userStore.phoneForRegistration = userStore.userInfo!.phone;
     setFieldsValueFromUserData();
   };
 

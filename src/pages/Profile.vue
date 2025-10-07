@@ -177,8 +177,8 @@ const actions = [
                       v-model="phone"
                       mask="+### ## ### ## ##"
                       :label="t('registration.phoneNumber')"
-                      disabled
-                      readonly
+                      :disabled="true"
+                      :readonly="true"
                     />
                     <div class="font-14-r color-secondary" style="margin-top: 0.4rem">
                       Номер телефона нельзя изменить
