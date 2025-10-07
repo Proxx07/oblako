@@ -65,7 +65,7 @@ export const useRegistration = () => {
     if (loading.value) return;
     const { data, error }
         = await $axios.post<{ id: string }>('/api/1/loyalty/iiko/customer/create_or_update', setRegistrationBody(), { loading });
-    if (!data || error || edit) return;
+    if (!data || error || edit.value) return;
     userStore.setStoredPhone(userStore.phoneForRegistration);
     if (data.id) {
       await $axios.post('/api/1/loyalty/iiko/customer_category/add', {
