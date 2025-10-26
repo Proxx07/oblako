@@ -5,3 +5,5 @@ export const setPostBody = (phone: string) => {
     organizationId: import.meta.env.VITE_API_ORG_ID,
   };
 };
+
+export type AuthSteps = 'age' | 'phone' | 'code';

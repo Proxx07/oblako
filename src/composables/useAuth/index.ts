@@ -54,7 +54,6 @@ export const useAuth = () => {
       userStore.setUserInfo(data);
       userStore.setStoredPhone(modelPhoneNumber.value);
       if (data.cards === null || data.cards.length === 0) {
-        console.log('here');
         await updateUserInfo(data);
       }
       else {
