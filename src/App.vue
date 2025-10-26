@@ -22,4 +22,9 @@ onBeforeMount(() => {
   </AppLayout>
 </template>
 
-<style scoped lang="scss"></style>
+<style lang="scss">
+#app {
+  background: var(--site-bg);
+  text: var(--text-color);
+}
+</style>

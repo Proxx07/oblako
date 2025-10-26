@@ -13,7 +13,7 @@ export const cardConfig = (): CardDesignTokens => {
       },
       dark: {
         root: {
-          background: '#000',
+          background: 'var(--card-bg)',
           color: 'var(--white)',
         },
       },

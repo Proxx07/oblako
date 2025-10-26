@@ -8,8 +8,13 @@ export default {
   month: 'месяц',
 
   auth: {
+
+    ageQuestion: 'Вам есть 18?',
+    serviceAge: 'Сервис предназначен для лиц достигших 18 лет',
+    ageConfirm: 'Мне есть 18',
+
     login: 'Войдите в ваш аккаунт',
-    enterPhone: 'Введите номер телефона',
+    enterPhone: 'Введите ваш номер телефона',
     smsSend: 'Мы отправим SMS с кодом подтверждения',
     getCode: 'Получить код',
     enter: 'Войти',
@@ -43,21 +48,6 @@ export default {
   },
 
   logout: 'Вы действительно хотите выйти из аккаунта?',
-
-  statuses: {
-    approved: {
-      title: 'Approved',
-      description: 'Approved description',
-    },
-    rejected: {
-      title: 'Rejected',
-      description: 'Rejected description',
-    },
-    close: {
-      title: 'Эта сессия больше неактуальна',
-      description: 'Данные устарели и использовать её нельзя. Пожалуйста, закройте вкладку.',
-    },
-  },
 
   rules: {
     required: 'Обязательное поле!',

@@ -7,11 +7,13 @@ const props = defineProps<{
   spanBg?: string
   color?: string
   noFill?: boolean
+  padding?: string
 }>();
 
 const colorVal = computed(() => props.color || 'unset');
 const iconSize = computed(() => props.size ? `${props.size}px` : 'auto');
-// const background = computed(() => props.spanBg || 'transparent');
+const bg = computed(() => props.spanBg || 'transparent');
+const pa = computed(() => props.padding || '0rem');
 </script>
 
 <template>
@@ -28,16 +30,9 @@ span {
   overflow: hidden;
   text-align: center;
   color: v-bind(colorVal);
-  &.primary-gradient {
-    width: 6.4rem;
-    height: 6.4rem;
-    border-radius: var(--radius-l);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-500);
-    border: 1px solid color-mix(in oklab, var(--primary-500) 30%, transparent);
-  }
+  background: v-bind(bg);
+  padding: v-bind(pa);
+  border-radius: var(--radius-round);
   :deep(svg) {
     width: v-bind(iconSize);
     height: v-bind(iconSize);
