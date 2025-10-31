@@ -19,6 +19,9 @@ export const buttonConfig = (): ButtonDesignTokens => {
         color: 'var(--primary-surface-color)',
         hoverColor: 'var(--primary-surface-color)',
         activeColor: 'var(--primary-surface-color)',
+        // borderColor: 'transparent',
+        // hoverBorderColor: 'transparent',
+        // activeBorderColor: 'transparent',
       },
 
       secondary: {

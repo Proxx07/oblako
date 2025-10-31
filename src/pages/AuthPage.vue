@@ -2,9 +2,8 @@
 import { Button, Card } from 'primevue';
 import { useI18n } from 'vue-i18n';
 import { forwardArrow, phone } from '@/assets/icons';
-import VInputMask from '@/components/Form/VInputMask.vue';
+import VPhoneInput from '@/components/Form/VPhoneInput.vue';
 import PageWrapper from '@/components/UI/PageWrapper.vue';
-import VIcon from '@/components/UI/VIcon.vue';
 import { useAuth } from '@/composables/useAuth';
 
 const { t } = useI18n();
@@ -12,66 +11,50 @@ const { loading, phoneNumber, getCustomerInfo } = useAuth();
 </script>
 
 <template>
-  <PageWrapper>
+  <PageWrapper :bottom-padding="false">
     <template #top>
       <div class="title">
         OBLACKO
       </div>
-      <div class="note">
-        {{ t('auth.login') }}
-      </div>
     </template>
-    <Card class="card">
-      <template #content>
-        <div class="card-inner">
-          <VIcon :icon="phone" class="primary-gradient" />
-
-          <div class="text-center">
-            <div class="font-24-l">
-              {{ t('auth.enterPhone') }}
-            </div>
-            <div class="note font-14-l">
-              {{ t('auth.smsSend') }}
-            </div>
-          </div>
-
-          <div class="phone-input">
-            <div class="font-18-l p-inputtext" style="color: var(--secondary-900); min-height: 56px; display: flex; align-items: center;">
-              +998
-            </div>
-            <VInputMask
-              v-model="phoneNumber"
-              mask="## ### ## ##"
-              placeholder="## ### ## ##"
-              unmask
-              :disabled="loading"
-              :pt="{ root: { inputmode: 'numeric' } }"
-            />
-          </div>
-
-          <Button
-            :label="t('auth.enter')"
-            :loading="loading"
-            :icon="forwardArrow"
-            fluid
-            icon-pos="right"
-            @click="getCustomerInfo"
-          />
+    <div class="content">
+      <div>
+        <div class="main-note font-24-b">
+          {{ t('auth.enterPhone') }}
         </div>
-      </template>
-    </Card>
-    <template #bottom>
-      <div class="note font-14-l">
-        Продолжая, вы соглашаетесь с
+        <div class="note font-14-l">
+          {{ t('auth.smsSend') }}
+        </div>
       </div>
-      <div style="text-align: center;" class="font-14-l">
-        <a style="color: var(--primary-500);" @click="$router.push('/privacy-policy')">Политикой конфиденциальности</a>
+      <VPhoneInput v-model="phoneNumber" :disabled="loading" style="margin-top: 2rem;" />
+    </div>
+
+    <template #bottom>
+      <div class="bottom">
+        <div class="bottom-note font-14-l text-center">
+          Продолжая, вы соглашаетесь с
+        </div>
+        <div style="text-align: center;" class="font-14-l">
+          <a style="color: var(--primary-500);" @click="$router.push('/privacy-policy')">Политикой конфиденциальности</a>
+        </div>
+        <Button
+          :label="t('auth.enter')"
+          :loading="loading"
+          :icon="forwardArrow"
+          fluid
+          icon-pos="right"
+          style="margin-top: 25px;"
+          @click="getCustomerInfo"
+        />
       </div>
     </template>
   </PageWrapper>
 </template>
 
 <style scoped lang="scss">
+.content {
+  padding: 0 2rem;
+}
 .phone-input {
   display: flex;
   flex-direction: row;
@@ -80,8 +63,8 @@ const { loading, phoneNumber, getCustomerInfo } = useAuth();
   gap: 1rem;
 }
 .title {
-  font: var(--font-36-r);
-  color: var(--primary-500);
+  font: var(--font-20-l);
+  color: white;
   margin-bottom: .8rem;
   text-align: center;
 }
@@ -96,10 +79,27 @@ const { loading, phoneNumber, getCustomerInfo } = useAuth();
     align-items: center;
   }
 }
+
+.main-note {
+  line-height: 32px !important;
+  width: 70%;
+}
+
 .note {
-  text-align: center;
   color: var(--secondary-900);
   font: var(--font-16-l);
-  padding: .8rem 0;
+  padding: 2rem 0;
+  line-height: 24px !important;
+  width: 80%;
+}
+
+.bottom-note {
+  color: var(--secondary-900);
+  font: var(--font-16-l);
+  padding: 1rem 0;
+}
+
+.bottom {
+  margin-bottom: 2rem;
 }
 </style>

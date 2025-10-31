@@ -6,12 +6,14 @@ body {
   .p-dialog {
     max-width: 375px;
     width: 100%;
+
     &.full-dialog {
       width: 100vw;
       height: 100vh;
       max-width: 100vw;
       max-height: 100vh;
     }
+
     .p-dialog-title {
       text-align: center;
       color: var(--primary-500);
@@ -28,6 +30,7 @@ body {
   .confirmation-dialog {
     max-width: 36rem;
     width: 100%;
+
     .p-dialog-content {
       padding: 0;
     }
@@ -35,9 +38,11 @@ body {
 
   .p-button {
     transition: cubic-bezier(.4, 0, .2, 1) var(--transition-fast);
+
     &.p-button-outlined {
-     background: color-mix(in oklab, currentColor 10%, transparent);
+      background: color-mix(in oklab, currentColor 10%, transparent);
     }
+
     &:hover {
       transform: scale(1.03) translateY(-3px);
     }
@@ -45,20 +50,24 @@ body {
 
   .p-button-icon-svg {
     font-size: 0 !important;
+
     svg {
       width: auto;
       max-width: 100%;
       max-height: 100%;
       transition: var(--transition-fast);
+
       &[fill]:not([fill='none']) {
         fill: currentColor;
       }
     }
+
     &:not(.no-fill) {
       svg {
         [fill]:not([fill='none']) {
           fill: currentColor;
         }
+
         [stroke]:not([stroke='none']) {
           stroke: currentColor;
         }
@@ -76,10 +85,16 @@ body {
   }
 
   .p-card-body {
-    background: linear-gradient( to bottom right,
-                    color-mix(in oklab, #fff 10%, transparent) 0%,
-                    color-mix(in oklab, #ffeb3b 7%, transparent) 100%);
+    // background: linear-gradient( to bottom right,
+    //                 color-mix(in oklab, #fff 10%, transparent) 0%,
+    //                 color-mix(in oklab, #ffeb3b 7%, transparent) 100%);
     border-radius: var(--p-card-border-radius);
+    background: rgba(29, 29, 29, 1);
+  }
+
+  .p-card-body.credit-card {
+    background: linear-gradient(180deg, rgba(255, 193, 7, 1) 0%, rgba(255, 213, 79, 1) 100%);
+    color: var(--primary-surface-color);
   }
 
   .p-select {
@@ -88,12 +103,15 @@ body {
     --p-select-lg-font-size: 3rem;
     --p-icon-size: 2.5rem;
     --p-select-sm-font-size: 1.5rem;
+
     &.p-select-sm {
       --p-select-dropdown-width: 3.6rem;
     }
+
     &.p-select-lg {
       --p-select-dropdown-width: 6rem;
     }
+
     .p-select-dropdown {
       margin: -1px -1px -1px 0;
       background: var(--primary-500);

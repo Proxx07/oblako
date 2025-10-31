@@ -1,22 +1,16 @@
 <script setup lang="ts">
-import { Button, Card, Dialog } from 'primevue';
+import { Card } from 'primevue';
 import { computed } from 'vue';
-import { useRouter } from 'vue-router';
-import { calendar, delivery, logout, qr } from '@/assets/icons';
-import QrGenerator from '@/components/QrGenerator.vue';
+import { calendar, delivery } from '@/assets/icons';
 import CreditCard from '@/components/UI/CreditCard.vue';
 import VIcon from '@/components/UI/VIcon.vue';
-import { useToggle } from '@/composables/UI';
-import { $confirm } from '@/plugins/confirmation.ts';
 import { useUserStore } from '@/store/userStore.ts';
 
 const userStore = useUserStore();
-const $router = useRouter();
-const { show: showQr, open: openQr } = useToggle();
 
 const advantages = [
-  { title: 'Резерв', text: 'Забронировать', icon: calendar, link: 'https://t.me/Oblacko_10' },
-  { title: 'Доставка', text: 'Заказать домой', icon: delivery, link: 'https://eats.yandex.com/uz/r/oblako_1681733515?placeSlug=oblako' },
+  { title: 'Доставка', text: '', icon: delivery, link: 'https://eats.yandex.com/uz/r/oblako_1681733515?placeSlug=oblako' },
+  { title: 'Резерв', text: '', icon: calendar, link: 'https://t.me/Oblacko_10' },
   // { title: 'Друзья', text: 'Мои друзья', icon: users },
   // { title: 'Лояльность', text: 'Правила бонусов', icon: aim },
 ];
@@ -45,14 +39,6 @@ const validThru = computed(() => {
   const year = String(date.getFullYear()).slice(-2);
   return `${month}/${year}`;
 });
-
-const logOut = async () => {
-  const ok = await $confirm.default({ title: 'confirmations.warning', subtitle: 'logout' });
-  if (ok) {
-    userStore.resetUserData();
-    await $router.push({ name: 'auth' });
-  }
-};
 </script>
 
 <template>
@@ -60,28 +46,24 @@ const logOut = async () => {
     <div class="greeting">
       <div class="details">
         <div class="font-24-r">
-          Привет, {{ userStore.userInfo.name }}!
+          Привет, <br> {{ userStore.userInfo.name }}!
         </div>
-        <!-- <div class="font-16-r color-secondary">
-          Добро пожаловать в OBLACKO
-        </div> -->
       </div>
-      <Button :icon="logout" label="Выйти" size="small" icon-pos="right" severity="secondary" @click="logOut" />
     </div>
 
     <CreditCard :balance="walletBalance" :card-number="cardNumberPreview" :valid-thru="validThru" />
 
-    <Button label="Показать код кассиру" fluid :icon="qr" @click="openQr" />
+    <!-- <Button label="Показать код кассиру" fluid :icon="qr" @click="openQr" /> -->
 
     <div class="services">
       <Card v-for="item in advantages" :key="item.title" style="position:relative;">
         <template #content>
-          <div style="padding: .5rem;">
+          <div style="padding: .5rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
             <VIcon :icon="item.icon" color="var(--primary-500)" :size="32" style="margin-bottom: 1rem" />
-            <div class="font-14-r">
+            <div class="font-14-l">
               {{ item.title }}
             </div>
-            <div class="font-12-r" style="padding-top: .4rem">
+            <div class="font-12-l" style="padding-top: .4rem">
               {{ item.text }}
             </div>
           </div>
@@ -89,37 +71,6 @@ const logOut = async () => {
         </template>
       </Card>
     </div>
-
-    <Dialog v-model:visible="showQr" modal header="Код для кассира">
-      <div class="qr-inner text-center">
-        <QrGenerator :string-for-qr="userCardNumber" />
-
-        <div>
-          <div class="font-16-r" style="margin-bottom: .8rem">
-            Номер карты
-          </div>
-          <div class="font-14-l color-secondary">
-            {{ cardNumberPreview }}
-          </div>
-        </div>
-
-        <Card>
-          <template #content>
-            <div class="font-12-r color-secondary">
-              Баланс
-            </div>
-            <div class="font-18-r" style="color: var(--primary-500); margin-top: 5px">
-              {{ walletBalance.toLocaleString('ru') }} баллов
-            </div>
-          </template>
-        </Card>
-      </div>
-      <template #footer>
-        <div class="font-14-l color-secondary text-center w-full">
-          Покажите этот код кассиру для списания баллов
-        </div>
-      </template>
-    </dialog>
   </div>
 </template>
 

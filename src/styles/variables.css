@@ -4,8 +4,8 @@
     --p-scrollbar-width: 5px;
 
     /* ================== fonts ================== */
-    --primary-font-r: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --primary-font-b: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --primary-font-r: 'Montserrat', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --primary-font-b: 'Montserrat', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
     /* --font-{size}-{weight} */
     --font-10-l: normal 400 1.0rem/1 var(--primary-font-r);
@@ -46,12 +46,26 @@
     --font-28-b: normal 600 2.8rem/1 var(--primary-font-b);
     --font-30-b: normal 600 3.0rem/1 var(--primary-font-b);
 
+    --font-10-lb: normal 700 1.0rem/1 var(--primary-font-b);
+    --font-12-lb: normal 700 1.2rem/1 var(--primary-font-b);
+    --font-14-lb: normal 700 1.4rem/1 var(--primary-font-b);
+    --font-16-lb: normal 700 1.6rem/1 var(--primary-font-b);
+    --font-18-lb: normal 700 1.8rem/1 var(--primary-font-b);
+    --font-20-lb: normal 700 2.0rem/1 var(--primary-font-b);
+    --font-22-lb: normal 700 2.2rem/1 var(--primary-font-b);
+    --font-24-lb: normal 700 2.4rem/1 var(--primary-font-b);
+    --font-26-lb: normal 700 2.6rem/1 var(--primary-font-b);
+    --font-28-lb: normal 700 2.8rem/1 var(--primary-font-b);
+    --font-30-lb: normal 700 3.0rem/1 var(--primary-font-b);
+    --font-48-lb: normal 700 4.8rem/1 var(--primary-font-b);
+    --font-64-lb: normal 700 6.4rem/1 var(--primary-font-b);
+
 
     /* ================== other ================== */
-    --radius-s: 0.8rem;
-    --radius-m: 1.6rem;
-    --radius-l: 2.4rem;
-    --radius-xl: 5rem;
+    --radius-s: 0.4rem;
+    --radius-m: 1.2rem;
+    --radius-l: 1.5rem;
+    --radius-xl: 4rem;
     --radius-round: 50%;
 
     --transition-fast: all 0.3s;
@@ -66,6 +80,7 @@ html {
     --tg-viewport-height: 100dvh;
     --tg-viewport-stable-height: 100dvh;
 }
+
 .font-none {
     font-size: 0 !important;
 }
@@ -73,33 +88,43 @@ html {
 .font-10-l {
     font: var(--font-10-l) !important
 }
+
 .font-12-l {
     font: var(--font-12-l) !important
 }
+
 .font-14-l {
     font: var(--font-14-l) !important;
 }
+
 .font-16-l {
     font: var(--font-16-l) !important;
 }
+
 .font-18-l {
     font: var(--font-18-l) !important;
 }
+
 .font-20-l {
     font: var(--font-20-l) !important;
 }
+
 .font-22-l {
     font: var(--font-22-l) !important;
 }
+
 .font-24-l {
     font: var(--font-24-l) !important;
 }
+
 .font-26-l {
     font: var(--font-26-l) !important;
 }
+
 .font-28-l {
     font: var(--font-28-l) !important;
 }
+
 .font-30-l {
     font: var(--font-30-l) !important;
 }
@@ -107,33 +132,43 @@ html {
 .font-10-r {
     font: var(--font-10-r) !important;
 }
+
 .font-12-r {
     font: var(--font-12-r) !important;
 }
+
 .font-14-r {
     font: var(--font-14-r) !important;
 }
+
 .font-16-r {
     font: var(--font-16-r) !important;
 }
+
 .font-18-r {
     font: var(--font-18-r) !important;
 }
+
 .font-20-r {
     font: var(--font-20-r) !important;
 }
+
 .font-22-r {
     font: var(--font-22-r) !important;
 }
+
 .font-24-r {
     font: var(--font-24-r) !important;
 }
+
 .font-26-r {
     font: var(--font-26-r) !important;
 }
+
 .font-28-r {
     font: var(--font-28-r) !important;
 }
+
 .font-30-r {
     font: var(--font-30-r) !important;
 }
@@ -145,30 +180,39 @@ html {
 .font-10-b {
     font: var(--font-10-b) !important;
 }
+
 .font-12-b {
     font: var(--font-12-b) !important;
 }
+
 .font-14-b {
     font: var(--font-14-b) !important;
 }
+
 .font-16-b {
     font: var(--font-16-b) !important;
 }
+
 .font-18-b {
     font: var(--font-18-b) !important;
 }
+
 .font-20-b {
     font: var(--font-20-b) !important;
 }
+
 .font-22-b {
     font: var(--font-22-b) !important;
 }
+
 .font-24-b {
     font: var(--font-24-b) !important;
 }
+
 .font-26-b {
     font: var(--font-26-b) !important;
 }
+
 .font-28-b {
     font: var(--font-28-b) !important;
 }
@@ -177,13 +221,67 @@ html {
     font: var(--font-28-b) !important;
 }
 
+.font-10-b {
+    font: var(--font-10-b) !important;
+}
+
+.font-12-lb {
+    font: var(--font-12-lb) !important;
+}
+
+.font-14-lb {
+    font: var(--font-14-lb) !important;
+}
+
+.font-16-lb {
+    font: var(--font-16-lb) !important;
+}
+
+.font-18-lb {
+    font: var(--font-18-lb) !important;
+}
+
+.font-20-lb {
+    font: var(--font-20-lb) !important;
+}
+
+.font-22-lb {
+    font: var(--font-22-lb) !important;
+}
+
+.font-24-lb {
+    font: var(--font-24-lb) !important;
+}
+
+.font-26-lb {
+    font: var(--font-26-lb) !important;
+}
+
+.font-28-lb {
+    font: var(--font-28-lb) !important;
+}
+
+.font-30-lb {
+    font: var(--font-28-lb) !important;
+}
+
+.font-48-lb {
+    font: var(--font-48-lb) !important;
+}
+
+.font-64-lb {
+    font: var(--font-64-lb) !important;
+}
+
 
 .text-left {
     text-align: left;
 }
+
 .text-center {
     text-align: center;
 }
+
 .text-right {
     text-align: right;
 }
@@ -213,4 +311,8 @@ html {
 
 .color-secondary {
     color: var(--secondary-900)
+}
+
+.color-bg {
+    color: var(--bg-color);
 }

@@ -39,6 +39,8 @@ import user from './user.svg?raw';
 import users from './users.svg?raw';
 import uzcard from './uzcard.svg?raw';
 
+import warning from './warning.svg?raw';
+
 export {
   aim,
   backArrow,
@@ -71,4 +73,5 @@ export {
   user,
   users,
   uzcard,
+  warning,
 };

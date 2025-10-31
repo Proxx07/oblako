@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 
+const props = withDefaults(defineProps<{ centerContent?: boolean, bottomPadding?: boolean }>(), { centerContent: true, bottomPadding: true });
 const topAnimate = ref(false);
 const centerAnimate = ref(false);
 const footerAnimate = ref(false);
@@ -23,10 +24,10 @@ onMounted(() => {
     <div class="page-top" :class="[!topAnimate && 'slide-in-down-enter-from']">
       <slot name="top" />
     </div>
-    <div class="page-content" :class="[!centerAnimate && 'scale-fade-enter-from']">
+    <div class="page-content" :class="[{ 'page-content--centered': props.centerContent }, !centerAnimate && 'scale-fade-enter-from']">
       <slot />
     </div>
-    <div class="page-bottom" :class="[!footerAnimate && 'slide-in-up-enter-from']">
+    <div class="page-bottom" :class="[{ 'page-bottom--pad': props.bottomPadding }, !footerAnimate && 'slide-in-up-enter-from']">
       <slot name="bottom" />
     </div>
   </div>
@@ -37,7 +38,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 4.8rem 1.6rem 0;
+  padding: 2rem 1.6rem 0;
   width: 100%;
   flex-grow: 1;
 }
@@ -57,12 +58,12 @@ onMounted(() => {
 .page-content {
   flex-grow: 1;
   display: flex;
+}
+.page-content--centered {
   align-items: center;
   justify-content: center;
   margin-top: auto;
   margin-bottom: auto;
 }
-.page-bottom {
-  padding-bottom: 10rem;
-}
+.page-bottom--pad { padding-bottom: 10rem; }
 </style>
