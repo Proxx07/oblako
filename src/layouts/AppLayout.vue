@@ -59,6 +59,7 @@ const clickHandler = async (page: { name: string, routerName?: string }) => {
           size="small"
           :class="[page.name === 'qr' && 'qr-button']"
           :text="page.name !== 'qr'"
+          :pt="{ label: { class: 'font-12-l' } }"
           @click="clickHandler(page)"
         />
       </template>
@@ -154,9 +155,16 @@ const clickHandler = async (page: { name: string, routerName?: string }) => {
   right: 2.4rem;
   z-index: 100;
 
+  :deep(svg) {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+
   .qr-button {
-    width: 6.4rem;
-    height: 6.4rem;
+    aspect-ratio: 1;
+    max-width: 6.4rem;
+    height: auto;
+    width: 100%;
     :deep(svg) {
       width: 3.2rem;
       height: 3.2rem;
@@ -172,7 +180,7 @@ const clickHandler = async (page: { name: string, routerName?: string }) => {
     align-items: center;
   }
   :deep(.p-button-sm) {
-    padding: 1rem;
+    padding: .8rem;
   }
 }
 
