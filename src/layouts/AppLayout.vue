@@ -118,6 +118,7 @@ const clickHandler = async (page: { name: string, routerName?: string }) => {
   justify-content: center;
   padding: 2rem;
   gap: 3.2rem;
+  z-index: 1000;
   .title {
     position: relative;
     font: normal 400 9.6rem/1 var(--primary-font-r);
