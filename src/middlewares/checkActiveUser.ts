@@ -9,7 +9,19 @@ export const checkActiveUser = async () => {
   if (!globalLoaderStore.loader) return true;
 
   await new Promise(resolve => setTimeout(resolve, 500));
-  let name: 'main' | 'auth' = 'auth';
+  let name: 'main' | 'auth' | 'age' = 'auth';
+
+  // проверка подтверждения возраста на первом запуске
+  try {
+    const ageConfirmed = localStorage.getItem('ageConfirmed') === '1';
+    if (!ageConfirmed) {
+      name = 'age';
+      globalLoaderStore.closeLoader();
+      return { name };
+    }
+  } catch (e) {
+    // если localStorage недоступно, продолжаем обычный флоу
+  }
 
   const userStore = useUserStore();
   if (userStore.storedPhone) {

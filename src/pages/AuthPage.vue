@@ -24,14 +24,14 @@ const setStep = (step: AuthSteps) => {
       </div>
     </template>
     <AgeConfirm
-      v-if="authStep === 'age'"
-      @change-step="setStep"
+        v-if="authStep === 'age'"
+        @change-step="setStep"
     />
     <PhoneNumberForm
-      v-if="authStep === 'phone'"
-      v-model="phoneNumber"
-      :loading="loading"
-      @form-submit="getCustomerInfo"
+        v-if="authStep === 'phone'"
+        v-model="phoneNumber"
+        :loading="loading"
+        @form-submit="getCustomerInfo"
     />
   </PageWrapper>
 </template>

@@ -61,10 +61,10 @@ const logOut = async () => {
 
     <RubberList :gap="1.6">
       <Card
-        v-for="item in advantages"
-        :key="item.title"
-        style="position:relative"
-        @click="item.action"
+          v-for="item in advantages"
+          :key="item.title"
+          style="position:relative"
+          @click="item.action"
       >
         <template #content>
           <div style="padding: .5rem" class="text-center">

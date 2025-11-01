@@ -1,41 +1,41 @@
 :root {
-  --primary-50:  rgb(255, 248, 225);
-  --primary-100: rgb(255, 236, 179);
-  --primary-200: rgb(255, 224, 130);
-  --primary-300: rgb(255, 213, 79);
-  --primary-400: rgb(255, 202, 40);
-  --primary-500: rgb(255, 193, 7);   /* Base color */
-  --primary-600: rgb(255, 179, 0);
-  --primary-700: rgb(255, 160, 0);
-  --primary-800: rgb(255, 143, 0);
-  --primary-900: rgb(232, 122, 29);
-  --primary-950: rgb(201, 91, 0);
+    --primary-50:  rgb(255, 248, 225);
+    --primary-100: rgb(255, 236, 179);
+    --primary-200: rgb(255, 224, 130);
+    --primary-300: rgb(255, 213, 79);
+    --primary-400: rgb(255, 202, 40);
+    --primary-500: rgb(255, 193, 7);   /* Base color */
+    --primary-600: rgb(255, 179, 0);
+    --primary-700: rgb(255, 160, 0);
+    --primary-800: rgb(255, 143, 0);
+    --primary-900: rgb(232, 122, 29);
+    --primary-950: rgb(201, 91, 0);
 
-  --secondary-50:  rgb(255, 255, 255);
-  --secondary-100: rgb(254, 254, 254);
-  --secondary-200: rgb(253, 253, 253);
-  --secondary-300: rgb(252, 252, 252);
-  --secondary-400: rgb(251, 251, 251);
-  --secondary-500: rgb(240, 240, 240);  /* Base neutral gray */
-  --secondary-600: rgb(225, 225, 225);
-  --secondary-700: rgb(200, 200, 200);
-  --secondary-800: rgb(175, 175, 175);
-  --secondary-900: rgb(150, 150, 150);
-  --secondary-950: rgb(125, 125, 125);
+    --secondary-50:  rgb(255, 255, 255);
+    --secondary-100: rgb(254, 254, 254);
+    --secondary-200: rgb(253, 253, 253);
+    --secondary-300: rgb(252, 252, 252);
+    --secondary-400: rgb(251, 251, 251);
+    --secondary-500: rgb(240, 240, 240);  /* Base neutral gray */
+    --secondary-600: rgb(225, 225, 225);
+    --secondary-700: rgb(200, 200, 200);
+    --secondary-800: rgb(175, 175, 175);
+    --secondary-900: rgb(150, 150, 150);
+    --secondary-950: rgb(125, 125, 125);
 
-  --black: rgb(23, 23, 23);
-  --white: rgb(255, 255, 255);
+    --black: rgb(23, 23, 23);
+    --white: rgb(255, 255, 255);
 
 
-  --card-bg: rgb(29, 29, 29);
-  --form-field-bg: rgb(47, 47, 47);
+    --card-bg: rgb(29, 29, 29);
+    --form-field-bg: rgb(47, 47, 47);
 
-  --primary-surface-color: var(--black);
-  --secondary-surface-color: var(--black);
+    --primary-surface-color: var(--black);
+    --secondary-surface-color: var(--black);
 
-  --text-color: var(--white);
-  --note-text-color: rgba(170, 170, 168, 1);
+    --text-color: var(--white);
+    --note-text-color: rgba(170, 170, 168, 1);
 
-  --site-bg: var(--black);
+    --site-bg: var(--black);
 }
 
