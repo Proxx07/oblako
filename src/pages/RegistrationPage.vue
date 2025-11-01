@@ -1,19 +1,40 @@
 <script setup lang="ts">
-import { Button, Card } from 'primevue';
-import { useI18n } from 'vue-i18n';
+import { Button } from 'primevue';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { backArrow, forwardArrow, user, users } from '@/assets/icons';
-import VForm from '@/components/Form/VForm.vue';
-import VInputMask from '@/components/Form/VInputMask.vue';
-import VInputText from '@/components/Form/VInputText.vue';
+import { backArrow, check } from '@/assets/icons';
+import RegistrationNamesForm from '@/components/Forms/RegistrationNamesForm.vue';
+import RegistrationsUserInfoForm from '@/components/Forms/RegistrationsUserInfoForm.vue';
+import Steps from '@/components/Steps.vue';
 import PageWrapper from '@/components/UI/PageWrapper.vue';
 import VIcon from '@/components/UI/VIcon.vue';
 import { useRegistration } from '@/composables/useRegistration';
-import { sexOptions } from '@/composables/useRegistration/models';
+import { useUserStore } from '@/store/userStore.ts';
 
-const { t } = useI18n();
-const { loading, name, surName, birthDate, sex, email, phone, createCustomer } = useRegistration();
+const userStore = useUserStore();
+const {
+  name, surName,
+  birthDate, sex, email,
+  createCustomer,
+} = useRegistration();
 const $router = useRouter();
+
+const step = ref(1);
+
+const backClickHandler = () => {
+  if (step.value === 1) {
+    $router.push({ name: 'auth' });
+  }
+  else {
+    step.value--;
+  }
+};
+
+const formSubmitHandler = async () => {
+  // await createCustomer();
+  // if (userStore.userInfo?.id) step.value = 3;
+  step.value = 3;
+};
 </script>
 
 <template>
@@ -21,92 +42,64 @@ const $router = useRouter();
     <template #top>
       <div class="page-header">
         <Button
+          v-if="step !== 3"
           severity="secondary"
+          outlined
           :icon="backArrow"
-          class="back-button"
-          @click="$router.push({ name: 'auth' })"
+          @click="backClickHandler"
         />
-        <div class="details">
-          <div class="font-24-r">
-            {{ t('registration.title') }}
-          </div>
-          <div class="font-14-l" style="color: var(--secondary-900);">
-            {{ t('registration.description') }}
-          </div>
+        <div class="font-20-l text-center" style="flex-grow: 1;">
+          OBLACKO
         </div>
+        <span v-if="step !== 3" style="width: 4.5rem" />
       </div>
     </template>
-    <Card class="card">
-      <template #content>
-        <div class="card-inner">
-          <VIcon :icon="user" class="primary-gradient" />
+    <div class="content-wrapper">
+      <Steps :current-step="step" :steps-length="3" />
 
-          <VForm class="form-wrapper" @submit-form="createCustomer">
-            <VInputText
-              v-model="name"
-              :label="t('registration.name')"
-              :placeholder="t('registration.namePlaceholder')"
-              :rules="[$formRules.required()]"
+      <div class="forms-outer">
+        <TransitionGroup name="scale-fade">
+          <RegistrationNamesForm
+            v-if="step === 1"
+            v-model:sur-name="surName"
+            v-model:name="name"
+            class="form"
+            @submit-form="step = 2"
+          />
+          <RegistrationsUserInfoForm
+            v-if="step === 2"
+            v-model:sex="sex"
+            v-model:birth-date="birthDate"
+            v-model:email="email"
+            class="form"
+            @submit-form="formSubmitHandler"
+          />
+
+          <div
+            v-if="step === 3"
+            class="form step-3"
+          >
+            <VIcon
+              :icon="check"
+              class="mt-auto"
+              :size="40"
+              style="padding: 2.6rem"
+              span-bg="var(--primary-500)"
+              color="var(--black)"
             />
 
-            <VInputText
-              v-model="surName"
-              :label="t('registration.surName')"
-              :placeholder="t('registration.surNamePlaceHolder')"
-            />
-
-            <VInputMask
-              v-model="birthDate"
-              :label="t('registration.birthDate')"
-              :loading="loading"
-              mask="##/##/####"
-              placeholder="__-__-____"
-              :pt="{ root: { inputmode: 'numeric' } }"
-              :rules="[$formRules.required(), $formRules.birthDate()]"
-            />
-
-            <div class="sex-wrapper">
-              <div class="font-14-r colspan-2 text-left" style="color: var(--secondary-900)">
-                {{ t('registration.sex') }}
-              </div>
-              <Button
-                v-for="item in sexOptions"
-                :key="item.value"
-                :severity="sex === item.value ? 'primary' : 'secondary'"
-                :icon="users"
-                :label="t(`registration.${item.name}`)"
-                fluid
-                outlined
-                @click.prevent="sex = item.value"
-              />
+            <div class="font-30-l">
+              Добро пожаловать {{ userStore.userInfo?.name }}!
             </div>
-
-            <VInputText
-              v-model="email"
-              :label="t('registration.email')"
-              placeholder="example@email.com"
-            />
-
-            <VInputMask
-              v-model="phone"
-              mask="+### ## ### ## ##"
-              :label="t('registration.phoneNumber')"
-              :disabled="true"
-              :readonly="true"
-            />
-
-            <Button
-              type="submit"
-              :label="t('registration.createAccount')"
-              :icon="forwardArrow"
-              :loading="loading"
-              fluid
-              icon-pos="right"
-            />
-          </VForm>
-        </div>
-      </template>
-    </Card>
+            <div class="note-text">
+              Ваш аккаунт успешно зарегистрирован.
+              Теперь вы можете пользоваться всеми возможностями приложения OBLACKO.
+            </div>
+            <Button label="Начать" fluid class="mt-auto" @click="$router.push({ name: 'main' })" />
+          </div>
+        </TransitionGroup>
+      </div>
+    </div>
   </PageWrapper>
 </template>
 
@@ -115,16 +108,8 @@ const $router = useRouter();
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 40rem;
   gap: 1.6rem;
-  .back-button {
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: var(--white) !important;
-    border-color: var(--secondary-800) !important;
-    padding: .5rem;
-    width: 3.8rem;
-    height: 3.8rem;
-  }
+
   .details {
     display: flex;
     flex-direction: column;
@@ -133,26 +118,37 @@ const $router = useRouter();
   }
 }
 
-.card {
-  width: 100%;
-  max-width: 40rem;
-  .card-inner {
-    padding: 1rem;
-    text-align: center;
-  }
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-self: stretch;
+  gap: 2.4rem;
 }
-.form-wrapper {
+
+.forms-outer {
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+}
+
+.form {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  align-items: center;
-  padding-top: 2.4rem;
-}
-
-.sex-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
   width: 100%;
+  &.step-3 {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  & + .form {
+    position: absolute;
+    inset: 0;
+  }
+  :deep([type='submit']) {
+    margin-top: auto;
+  }
 }
 </style>

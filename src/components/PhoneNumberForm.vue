@@ -50,7 +50,7 @@ const privacyDialog = ref(false);
       </div>
     </div>
 
-    <Button :label="t('continue')" :loading="loading" fluid />
+    <Button type="submit" :label="t('continue')" :loading="loading" fluid />
     <PrivacyPolicy v-model="privacyDialog" @close="privacyDialog = false" />
   </VForm>
 </template>

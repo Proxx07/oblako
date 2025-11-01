@@ -2,6 +2,7 @@
 @use "colors.css";
 @use "transitions";
 @use "primevue";
+@import 'vue3-carousel/dist/carousel.css';
 
 * {
   padding: 0;
@@ -34,7 +35,7 @@ html:has(.face-id-page) {
 }
 
 .primary-gradient {
-  background: linear-gradient(to bottom right in oklab, color-mix(in oklab, var(--primary-500) 20%, transparent) 0%, color-mix(in oklab, var(--primary-500) 10%, transparent) 100%);
+  //background: linear-gradient(to bottom right in oklab, color-mix(in oklab, var(--primary-500) 20%, transparent) 0%, color-mix(in oklab, var(--primary-500) 10%, transparent) 100%);
 }
 
 ::-webkit-scrollbar-track {
@@ -50,4 +51,21 @@ html:has(.face-id-page) {
 ::-webkit-scrollbar-thumb {
   border-radius: var(--radius-m);
   background-color: var(--secondary-500);
+}
+
+.carousel {
+  --vc-pgn-width: 0.8rem;
+  --vc-pgn-height: 0.8rem;
+  --vc-pgn-margin: 1.2rem;
+  --vc-pgn-border-radius: var(--radius-m);
+  --vc-pgn-background-color: var(--form-field-bg);
+  --vc-pgn-active-color: var(--primary-500);
+  .carousel__pagination {
+    .carousel__pagination-button {
+      transition: var(--transition-fast);
+    }
+    .carousel__pagination-button--active {
+      width: 2.4rem;
+    }
+  }
 }

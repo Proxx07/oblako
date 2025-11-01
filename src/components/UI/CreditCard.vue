@@ -9,29 +9,37 @@ defineProps<{
 </script>
 
 <template>
-  <Card>
+  <Card class="card">
     <template #content>
       <div class="card-inner">
-        <div class="font-12-r color-secondary colspan-2">
-          OBLACKO CARD
-        </div>
-        <div class="font-24-r colspan-2">
-          {{ balance.toLocaleString('ru-RU') }} баллов
+        <div class="font-16-b colspan-2">
+          OBLACKO
         </div>
 
+        <div class="colspan-2">
+          <div class="font-12-r text-center">
+            Балланс
+          </div>
+          <div class="text-center" style="font-family: var(--primary-font-r); font-size: 6.4rem; font-weight: 700;">
+            {{ balance.toLocaleString('ru-RU') }}
+          </div>
+          <div class="font-12-r text-center">
+            Баллов
+          </div>
+        </div>
         <div class="colspan-2" style="height: 1.4rem" />
 
         <div class="font-12-r color-secondary">
-          CARD NUMBER
+          Номер карты
         </div>
         <div class="font-12-r color-secondary text-right">
-          VALID THRU
+          Действует до
         </div>
 
-        <div class="font-14-r">
+        <div class="font-16-b">
           {{ cardNumber }}
         </div>
-        <div class="font-14-r text-right">
+        <div class="font-16-b text-right">
           {{ validThru }}
         </div>
       </div>
@@ -40,10 +48,14 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
+.card {
+  color: var(--black);
+  background: linear-gradient(to bottom, rgba(255, 193, 7, 1), rgba(255, 213, 79, 1));
+}
 .card-inner {
   padding: 1rem;
   display: grid;
-  grid-template-columns: auto 80px;
+  grid-template-columns: auto 10rem;
   gap: 1rem;
 }
 </style>

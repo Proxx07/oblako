@@ -31,11 +31,9 @@ const setStep = (step: AuthSteps) => {
       v-if="authStep === 'phone'"
       v-model="phoneNumber"
       :loading="loading"
-      @form-submit="() => { console.log(phoneNumber) }"
+      @form-submit="getCustomerInfo"
     />
   </PageWrapper>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
     --p-scrollbar-width: 5px;
 
     /* ================== fonts ================== */
+    /*
     --primary-font-r: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --primary-font-b: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    */
+    --primary-font-r: "Montserrat", sans-serif;
+    --primary-font-b: "Montserrat", sans-serif;
 
     /* --font-{size}-{weight} */
     --font-10-l: normal 400 1.0rem/1 var(--primary-font-r);
