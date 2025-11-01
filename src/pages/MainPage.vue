@@ -22,7 +22,7 @@ const { show: showMenu, open: openMenu } = useToggle();
 
 const advantages = [
   { title: 'Доставка', icon: delivery, link: 'https://eats.yandex.com/uz/r/oblako_1681733515?placeSlug=oblako' },
-  { title: 'Резерв', icon: calendar, link: 'https://t.me/Oblacko_10' },
+  { title: 'Резерв', icon: calendar, link: 'https://t.me/oblacko_tashkent' },
   { title: 'Друзья', icon: users, action: () => $confirm.info({ title: 'confirmations.warning', subtitle: 'loyaltySystemInDev' }) },
   { title: 'Меню', icon: menu, action: () => openMenu() },
   { title: 'Правила', icon: aim, action: () => openRules() },
@@ -61,10 +61,10 @@ const logOut = async () => {
 
     <RubberList :gap="1.6">
       <Card
-          v-for="item in advantages"
-          :key="item.title"
-          style="position:relative"
-          @click="item.action"
+        v-for="item in advantages"
+        :key="item.title"
+        style="position:relative"
+        @click="item.action"
       >
         <template #content>
           <div style="padding: .5rem" class="text-center">
