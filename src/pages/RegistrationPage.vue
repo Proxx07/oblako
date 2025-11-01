@@ -31,8 +31,8 @@ const backClickHandler = () => {
 };
 
 const formSubmitHandler = async () => {
-  // await createCustomer();
-  // if (userStore.userInfo?.id) step.value = 3;
+  await createCustomer();
+  if (userStore.userInfo?.id) step.value = 3;
   step.value = 3;
 };
 </script>
