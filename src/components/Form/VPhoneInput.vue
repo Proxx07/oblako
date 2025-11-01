@@ -5,7 +5,7 @@ import { vMaska } from 'maska/vue';
 import { InputText } from 'primevue';
 import { ref } from 'vue';
 
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   modelValue: string
   disabled?: boolean
   loading?: boolean
