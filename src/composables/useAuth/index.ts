@@ -46,6 +46,7 @@ export const useAuth = () => {
     if (!isPhoneValid.value || loading.value) return;
     const { data, error }
         = await $axios.post<IGuest>('/api/1/loyalty/iiko/customer/info', setPostBody(modelPhoneNumber.value), { loading });
+
     if (!data || error) {
       userStore.setRegistrationPhone(modelPhoneNumber.value);
       $router.push({ name: 'registration' });
@@ -54,7 +55,6 @@ export const useAuth = () => {
       userStore.setUserInfo(data);
       userStore.setStoredPhone(modelPhoneNumber.value);
       if (data.cards === null || data.cards.length === 0) {
-        console.log('here');
         await updateUserInfo(data);
       }
       else {

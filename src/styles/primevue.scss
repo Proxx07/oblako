@@ -33,10 +33,18 @@ body {
     }
   }
 
+  .p-card {
+    overflow: hidden;
+  }
+
   .p-button {
     transition: cubic-bezier(.4, 0, .2, 1) var(--transition-fast);
-    &.p-button-outlined {
-     background: color-mix(in oklab, currentColor 10%, transparent);
+    &.p-button-icon-only {
+      width: auto;
+      padding: 0;
+      width: 4.5rem;
+      height: 4.5rem;
+      border-radius: var(--radius-round);
     }
     &:hover {
       transform: scale(1.03) translateY(-3px);
@@ -75,12 +83,14 @@ body {
     margin-top: -0.1rem;
   }
 
+  /*
   .p-card-body {
     background: linear-gradient( to bottom right,
                     color-mix(in oklab, #fff 10%, transparent) 0%,
                     color-mix(in oklab, #ffeb3b 7%, transparent) 100%);
     border-radius: var(--p-card-border-radius);
   }
+  */
 
   .p-select {
     --p-select-dropdown-width: 5rem;

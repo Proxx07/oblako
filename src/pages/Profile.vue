@@ -7,9 +7,8 @@ import {
   calendar,
   edit as editIcon,
   email as emailIcon, listIcon,
-  logout,
+  logout, loyalty,
   phone as phoneIcon,
-  shieldIcon,
   user,
   users,
 } from '@/assets/icons';
@@ -52,7 +51,7 @@ const updateCustomer = async () => {
 const userInfoList = computed(() => {
   if (!userStore.userInfo) return [];
   return [
-    { title: 'Полное имя', value: `${userStore.userInfo.name} ${userStore.userInfo.surname || ''}`, icon: user },
+    { title: 'Имя', value: `${userStore.userInfo.name} ${userStore.userInfo.surname || ''}`, icon: user },
     { title: 'Телефон', value: userStore.userInfo.phone, icon: phoneIcon },
     { title: 'Email', value: userStore.userInfo.email, icon: emailIcon },
     { title: 'Дата рождения', value: userStore.userInfo.birthday?.split(' ')[0] ?? '', icon: calendar },
@@ -64,14 +63,15 @@ const loyaltyDialog = ref(false);
 
 const actions = [
   {
-    title: 'Правила лояльности',
+    title: 'Политика конфиденциальности',
     icon: listIcon,
-    action: () => privacyDialog.value = true,
-  },
-  {
-    title: 'Конфиденциальность',
-    icon: shieldIcon,
     action: () => loyaltyDialog.value = true,
+  },
+
+  {
+    title: 'Правила лояльности',
+    icon: loyalty,
+    action: () => privacyDialog.value = true,
   },
 ];
 </script>
@@ -83,39 +83,31 @@ const actions = [
         <div class="font-24-r">
           Профиль
         </div>
-        <div class="font-16-r color-secondary">
-          Управление аккаунтом и настройками
+        <div class="note-text">
+          Управление аккаунтом
         </div>
       </div>
     </template>
 
     <div style="display: flex; flex-direction: column; gap: 1.2rem; width: 100%;">
+      <div class="edit-text">
+        <div class="font-16-l" style="line-height: 49px !important;">
+          Личная информация
+        </div>
+        <Button v-if="!edit" text size="small" @click="activateEdit">
+          <VIcon :icon="editIcon" :size="24" />
+        </Button>
+      </div>
       <Card v-if="userStore.userInfo" class="card">
         <template #content>
           <div class="profile-form-content">
-            <div class="user">
-              <VIcon :icon="user" class="primary-gradient" />
-              <div style="flex-grow: 1">
-                <div class="font-16-r">
-                  {{ userStore.userInfo.name.toUpperCase() }}
-                </div>
-                <div class="font-14-r color-secondary">
-                  Участник программы лояльности
-                </div>
-              </div>
-              <div class="edit">
-                <Button v-if="!edit" text size="small" @click="activateEdit">
-                  <VIcon :icon="editIcon" :size="24" />
-                </Button>
-              </div>
-            </div>
             <div class="dynamic-content">
               <Transition name="slide-in-left">
                 <div v-if="!edit">
                   <div v-for="item in userInfoList" :key="item.title" class="user-item">
-                    <VIcon :icon="item.icon" class="primary-gradient" :size="16" />
+                    <VIcon :icon="item.icon" class="icon" :size="20" span-bg="var(--form-field-bg)" color="var(--primary-500)" />
                     <div class="text" style="display: flex; flex-direction: column; gap: .4rem">
-                      <div class="font-14-r color-secondary">
+                      <div class="font-12-l" style="opacity: .6;">
                         {{ item.title }}
                       </div>
                       <div class="font-16-l">
@@ -186,13 +178,13 @@ const actions = [
                   </div>
 
                   <div style="display: flex; gap: 1rem; width: 100%">
+                    <Button label="Отмена" severity="secondary" fluid @click.prevent="deactivateEdit" />
                     <Button
                       type="submit"
                       label="Сохранить"
                       :loading="loading"
                       fluid
                     />
-                    <Button label="Отменить" severity="secondary" fluid @click.prevent="deactivateEdit" />
                   </div>
                 </VForm>
               </Transition>
@@ -205,7 +197,7 @@ const actions = [
         <template #content>
           <Button text fluid class="text-left" @click="action.action">
             <div style="display: flex; align-items: center; width: 100%; gap: 1.2rem">
-              <VIcon :icon="action.icon" class="primary-gradient" :size="16" style="width: 3rem; height: 3rem;" />
+              <VIcon :icon="action.icon" class="icon" :size="24" />
               <div class="font-16-l" style="color: #fff;">
                 {{ action.title }}
               </div>
@@ -247,6 +239,12 @@ const actions = [
   flex-direction: column;
   width: 100%;
 }
+.edit-text {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  justify-content: space-between;
+}
 .card {
   width: 100%;
   overflow: hidden;
@@ -254,27 +252,20 @@ const actions = [
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
-    padding: 1.25rem;
-  }
-  .user {
-    display: flex;
-    align-items: center;
-    gap: 1.6rem;
-    .primary-gradient {
-      min-width: 6.4rem;
-    }
+    padding: .8rem;
   }
   .user-item {
     display: flex;
     align-items: center;
-    padding: 1.2rem;
-    background: rgba(42, 42, 42, 0.3);
-    border-radius: var(--radius-m);
+    padding: .2rem 0;
     gap: 1.2rem;
     margin-bottom: 1.2rem;
-    .primary-gradient {
-      width: 3.2rem;
-      height: 3.2rem;
+    .icon {
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

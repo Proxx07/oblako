@@ -19,6 +19,9 @@ export const buttonConfig = (): ButtonDesignTokens => {
         color: 'var(--primary-surface-color)',
         hoverColor: 'var(--primary-surface-color)',
         activeColor: 'var(--primary-surface-color)',
+        // borderColor: 'transparent',
+        // hoverBorderColor: 'transparent',
+        // activeBorderColor: 'transparent',
       },
 
       secondary: {
@@ -39,7 +42,7 @@ export const buttonConfig = (): ButtonDesignTokens => {
 export const buttonPt = (instance: VNode<RendererNode, RendererElement, ButtonProps>): ButtonPassThroughOptions => {
   return {
     root: {
-      class: !instance.props?.size ? 'font-16-r' : instance.props.size === 'small' ? 'font-14-r' : 'font-18-r',
+      class: !instance.props?.size ? 'font-16-l' : instance.props.size === 'small' ? 'font-14-l' : 'font-18-l',
     },
 
     icon: {

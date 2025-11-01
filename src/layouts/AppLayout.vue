@@ -1,21 +1,36 @@
 <script setup lang="ts">
-import { Button, Toast } from 'primevue';
+import { Button, Card, Dialog, Toast } from 'primevue';
 import { useRoute, useRouter } from 'vue-router';
-import { contacts, home, profile } from '@/assets/icons';
+import { contacts, history, home, profile, qr } from '@/assets/icons';
+import QrGenerator from '@/components/QrGenerator.vue';
 import ConfirmationModal from '@/components/UI/confirmations/ConfirmationModal.vue';
+import { useToggle } from '@/composables/UI';
+import { $confirm } from '@/plugins/confirmation.ts';
 import { useConfirmationsStore } from '@/store/confirmations';
 import { useGlobalLoader } from '@/store/globalLoader.ts';
+import { useUserStore } from '@/store/userStore.ts';
 
 const confirmationsStore = useConfirmationsStore();
 const globalLoaderStore = useGlobalLoader();
 const $route = useRoute();
 const $router = useRouter();
 
+const userStore = useUserStore();
+
 const toolbarPages = [
   { name: 'Главная', icon: home, routerName: 'main' },
-  // { name: 'История', icon: history },
+  { name: 'История', icon: history },
+  { name: 'qr', icon: qr },
   { name: 'Контакты', icon: contacts, routerName: 'contacts' },
   { name: 'Профиль', icon: profile, routerName: 'profile' }];
+
+const { show: showQr, open: openQr } = useToggle();
+
+const clickHandler = async (page: { name: string, routerName?: string }) => {
+  if (page.name === 'qr') return openQr();
+  if (page.name === 'История') return $confirm.info({ title: 'confirmations.warning', subtitle: 'pageInDev' });
+  if (page.routerName) return $router.push({ name: page.routerName });
+};
 </script>
 
 <template>
@@ -31,23 +46,54 @@ const toolbarPages = [
 
   <Toast />
 
-  <div v-if="$route.name !== 'auth' && $route.name !== 'registration'" class="toolbar">
-    <Button
-      v-for="page in toolbarPages"
-      :key="page.name"
-      :label="page.name"
-      :icon="page.icon"
-      :severity="$route.name === page.routerName ? 'primary' : 'secondary'"
-      icon-pos="top"
-      size="small"
-      :outlined="$route.name === page.routerName"
-      :text="$route.name !== page.routerName"
-      class="toolbar-button"
-      :class="[$route.name === page.routerName && 'doted']"
-      @click="() => page.routerName && $router.push({ name: page.routerName })"
-    />
-  </div>
+  <template v-if="$route.name !== 'auth' && $route.name !== 'registration'">
+    <Card class="toolbar">
+      <template #content>
+        <Button
+            v-for="page in toolbarPages"
+            :key="page.name"
+            :label="page.name !== 'qr' ? page.name : undefined"
+            :icon="page.icon"
+            :severity="($route.name === page.routerName || page.name === 'qr') ? 'primary' : 'secondary'"
+            icon-pos="top"
+            size="small"
+            :class="[page.name === 'qr' && 'qr-button']"
+            :text="page.name !== 'qr'"
+            @click="clickHandler(page)"
+        />
+      </template>
+    </Card>
+    <Dialog v-model:visible="showQr" modal header="Код для кассира">
+      <div class="qr-inner text-center">
+        <QrGenerator :string-for-qr="userStore.userCardNumber" />
 
+        <div>
+          <div class="font-16-r" style="margin-bottom: .8rem">
+            Номер карты
+          </div>
+          <div class="font-14-l color-secondary">
+            {{ userStore.cardNumberPreview }}
+          </div>
+        </div>
+
+        <Card>
+          <template #content>
+            <div class="font-12-r color-secondary">
+              Баланс
+            </div>
+            <div class="font-18-r" style="color: var(--primary-500); margin-top: 5px">
+              {{ userStore.walletBalance.toLocaleString('ru') }} баллов
+            </div>
+          </template>
+        </Card>
+      </div>
+      <template #footer>
+        <div class="font-14-l color-secondary text-center w-full">
+          Покажите этот код кассиру для списания баллов
+        </div>
+      </template>
+    </Dialog>
+  </template>
   <Transition name="fade">
     <div v-if="globalLoaderStore.loader" class="global-loader">
       <div class="title">
@@ -101,33 +147,37 @@ const toolbarPages = [
 
 .toolbar {
   position: fixed;
-  padding: 1.6rem 2.4rem;
+  padding: .8rem;
   bottom: 1rem;
   left: 2.4rem;
   right: 2.4rem;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
-  display: flex;
-  justify-content: space-around;
-  gap: 1.2rem;
-  border-radius: var(--radius-l);
-  border: 1px solid rgba(66, 66, 66, 0.5);
-  .toolbar-button {
-    border: 0 !important;
-    --p-button-sm-padding-x: 1.2rem;
-    &.doted {
-      &:after {
-        content:'';
-        position: absolute;
-        top: -3px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-radius: var(--radius-round);
-        width: 8px;
-        height: 8px;
-        background: currentColor;
-      }
+  z-index: 100;
+
+  .qr-button {
+    width: 6.4rem;
+    height: 6.4rem;
+    :deep(svg) {
+      width: 3.2rem;
+      height: 3.2rem;
     }
   }
+
+  :deep(.p-card-body) {
+    padding: 0;
+  }
+  :deep(.p-card-content) {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+  }
+  :deep(.p-button-sm) {
+    padding: 1rem;
+  }
+}
+
+.qr-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
 }
 </style>

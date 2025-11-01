@@ -87,13 +87,14 @@ const customPreset = definePreset(Aura, {
     formField: {
       paddingX: '1.6rem',
       paddingY: '1.5rem',
+      borderRadius: 'var(--radius-m)',
       sm: {
         paddingX: '1rem',
         paddingY: '1.4rem',
       },
       lg: {
         paddingX: '2rem',
-        paddingY: '2.3rem',
+        paddingY: '1.5rem',
       },
     },
 
@@ -117,12 +118,13 @@ const customPreset = definePreset(Aura, {
 
       dark: {
         formField: {
-          background: '{neutral.800}',
+          background: 'transparent',
           color: 'var(--white)',
           disabledColor: 'var(--white)',
           disabledBackground: '{zinc.800}',
           placeholderColor: '{neutral.400}',
-          borderColor: 'color-mix(in srgb, var(--white), transparent 90%)',
+          // borderColor: 'color-mix(in srgb, var(--white), transparent 90%)',
+          borderColor: 'var(--form-field-bg)',
           hoverBorderColor: 'var(--primary-800)',
           focusBorderColor: 'var(--primary-500)',
           // @ts-expect-error next-line

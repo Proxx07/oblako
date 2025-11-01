@@ -1,11 +1,15 @@
-/*@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
     --p-scrollbar-width: 5px;
 
     /* ================== fonts ================== */
+    /*
     --primary-font-r: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --primary-font-b: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    */
+    --primary-font-r: "Montserrat", sans-serif;
+    --primary-font-b: "Montserrat", sans-serif;
 
     /* --font-{size}-{weight} */
     --font-10-l: normal 400 1.0rem/1 var(--primary-font-r);
@@ -34,17 +38,17 @@
 
     --font-36-r: normal 400 3.6rem/1 var(--primary-font-r);
 
-    --font-10-b: normal 600 1.0rem/1 var(--primary-font-b);
-    --font-12-b: normal 600 1.2rem/1 var(--primary-font-b);
-    --font-14-b: normal 600 1.4rem/1 var(--primary-font-b);
-    --font-16-b: normal 600 1.6rem/1 var(--primary-font-b);
-    --font-18-b: normal 600 1.8rem/1 var(--primary-font-b);
-    --font-20-b: normal 600 2.0rem/1 var(--primary-font-b);
-    --font-22-b: normal 600 2.2rem/1 var(--primary-font-b);
-    --font-24-b: normal 600 2.4rem/1 var(--primary-font-b);
-    --font-26-b: normal 600 2.6rem/1 var(--primary-font-b);
-    --font-28-b: normal 600 2.8rem/1 var(--primary-font-b);
-    --font-30-b: normal 600 3.0rem/1 var(--primary-font-b);
+    --font-10-b: normal 700 1.0rem/1 var(--primary-font-b);
+    --font-12-b: normal 700 1.2rem/1 var(--primary-font-b);
+    --font-14-b: normal 700 1.4rem/1 var(--primary-font-b);
+    --font-16-b: normal 700 1.6rem/1 var(--primary-font-b);
+    --font-18-b: normal 700 1.8rem/1 var(--primary-font-b);
+    --font-20-b: normal 700 2.0rem/1 var(--primary-font-b);
+    --font-22-b: normal 700 2.2rem/1 var(--primary-font-b);
+    --font-24-b: normal 700 2.4rem/1 var(--primary-font-b);
+    --font-26-b: normal 700 2.6rem/1 var(--primary-font-b);
+    --font-28-b: normal 700 2.8rem/1 var(--primary-font-b);
+    --font-30-b: normal 700 3.0rem/1 var(--primary-font-b);
 
 
     /* ================== other ================== */
@@ -187,7 +191,9 @@ html {
 .text-right {
     text-align: right;
 }
-
+.padding-0 {
+    padding: 0;
+}
 .w-full {
     width: 100%;
     max-width: 100%;
@@ -211,6 +217,11 @@ html {
     grid-column: span 2;
 }
 
-.color-secondary {
-    color: var(--secondary-900)
+.text-secondary-color {
+    color: var(--note-text-color);
+}
+
+.note-text {
+    color: var(--note-text-color);
+    font: var(--font-16-r);
 }

@@ -37,7 +37,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 4.8rem 1.6rem 0;
+  padding: 2.4em 1.6rem 0;
   width: 100%;
   flex-grow: 1;
 }
@@ -63,6 +63,6 @@ onMounted(() => {
   margin-bottom: auto;
 }
 .page-bottom {
-  padding-bottom: 10rem;
+  padding-bottom: 8rem;
 }
 </style>
