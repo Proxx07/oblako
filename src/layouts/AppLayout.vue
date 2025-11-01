@@ -50,16 +50,16 @@ const clickHandler = async (page: { name: string, routerName?: string }) => {
     <Card class="toolbar">
       <template #content>
         <Button
-            v-for="page in toolbarPages"
-            :key="page.name"
-            :label="page.name !== 'qr' ? page.name : undefined"
-            :icon="page.icon"
-            :severity="($route.name === page.routerName || page.name === 'qr') ? 'primary' : 'secondary'"
-            icon-pos="top"
-            size="small"
-            :class="[page.name === 'qr' && 'qr-button']"
-            :text="page.name !== 'qr'"
-            @click="clickHandler(page)"
+          v-for="page in toolbarPages"
+          :key="page.name"
+          :label="page.name !== 'qr' ? page.name : undefined"
+          :icon="page.icon"
+          :severity="($route.name === page.routerName || page.name === 'qr') ? 'primary' : 'secondary'"
+          icon-pos="top"
+          size="small"
+          :class="[page.name === 'qr' && 'qr-button']"
+          :text="page.name !== 'qr'"
+          @click="clickHandler(page)"
         />
       </template>
     </Card>
@@ -118,6 +118,7 @@ const clickHandler = async (page: { name: string, routerName?: string }) => {
   justify-content: center;
   padding: 2rem;
   gap: 3.2rem;
+  z-index: 1000;
   .title {
     position: relative;
     font: normal 400 9.6rem/1 var(--primary-font-r);
