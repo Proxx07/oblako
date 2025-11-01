@@ -37,7 +37,6 @@ const clickHandler = async (page: { name: string, routerName?: string }) => {
 <template>
   <component :is="$route.meta.layoutComponent">
     <slot />
-    <VIcon :icon="oblacko" :size="256" />
   </component>
 
   <div v-if="confirmationsStore.confirmations.length" id="confirmations-wrapper">
