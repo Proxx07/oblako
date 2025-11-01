@@ -34,17 +34,19 @@ import menu from './menu.svg?raw';
 
 import mobile from './mobile.svg?raw';
 
+import oblacko from './oblacko.svg?raw';
+
 import phone from './phone.svg?raw';
-
 import profile from './profile.svg?raw';
-import qr from './qr.svg?raw';
 
+import qr from './qr.svg?raw';
 import reload from './reload.svg?raw';
 import shieldIcon from './shieldIcon.svg?raw';
 import star from './star.svg?raw';
 import warning from './status/warning.svg?raw';
 import user from './user.svg?raw';
 import users from './users.svg?raw';
+
 import uzcard from './uzcard.svg?raw';
 
 export {
@@ -76,6 +78,7 @@ export {
   marker,
   menu,
   mobile,
+  oblacko,
   phone,
   profile,
   qr,

@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { Button, Card, Dialog, Toast } from 'primevue';
 import { useRoute, useRouter } from 'vue-router';
-import { contacts, history, home, profile, qr } from '@/assets/icons';
+import { contacts, history, home, oblacko, profile, qr } from '@/assets/icons';
 import QrGenerator from '@/components/QrGenerator.vue';
 import ConfirmationModal from '@/components/UI/confirmations/ConfirmationModal.vue';
+import VIcon from '@/components/UI/VIcon.vue';
 import { useToggle } from '@/composables/UI';
 import { $confirm } from '@/plugins/confirmation.ts';
 import { useConfirmationsStore } from '@/store/confirmations';
@@ -97,13 +98,14 @@ const clickHandler = async (page: { name: string, routerName?: string }) => {
   </template>
   <Transition name="fade">
     <div v-if="globalLoaderStore.loader" class="global-loader">
-      <div class="title">
+      <!-- <div class="title">
         OBLACKO
       </div>
 
       <div class="note">
         Smoke. Vibe. Repeat.
-      </div>
+      </div> -->
+      <VIcon :icon="oblacko" :size="256" />
     </div>
   </Transition>
 </template>

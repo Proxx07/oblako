@@ -3,7 +3,7 @@ import { address, contactsInstagram, contactsTelegram, delivery, googleMaps, sta
 export function useContactsPage() {
   const socials = [
     // { type: 'phone', title: 'Позвонить', value: '+998 99–798–84–88', link: 'tel:+998997988488', icon: contactsPhone },
-    { type: 'telegram', name: 'Telegram', link: 'https://t.me/Oblacko_10', icon: contactsTelegram },
+    { type: 'telegram', name: 'Telegram', link: 'https://t.me/oblacko_tashkent', icon: contactsTelegram },
     { type: 'instagram', name: 'Instagram', link: 'https://instagram.com/oblacko_tashkent', icon: contactsInstagram },
   ];
   /*
