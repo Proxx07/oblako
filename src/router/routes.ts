@@ -3,15 +3,6 @@ import type { RouteRecordRaw } from 'vue-router';
 const routes: RouteRecordRaw[] = [
 
   {
-    path: '/age',
-    name: 'age',
-    component: () => import('@/pages/AgePage.vue'),
-    meta: {
-      layout: 'Empty',
-    },
-  },
-
-  {
     path: '/',
     name: 'main',
     component: () => import('@/pages/MainPage.vue'),
