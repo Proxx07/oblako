@@ -45,10 +45,11 @@ const icon = computed(() => ConfirmationTypesIcon[props.type]);
 .card {
   width: 100%;
   max-width: 36rem;
+  padding: 1.6rem;
   :deep(.p-card-content) {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1.6rem;
   }
   .header-wrapper {
     display: flex;

@@ -2,47 +2,38 @@
 import { Button, Card, Dialog } from 'primevue';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { calendar, delivery, logout, qr } from '@/assets/icons';
-import QrGenerator from '@/components/QrGenerator.vue';
+import { aim, calendar, delivery, logout, menu, users } from '@/assets/icons';
+import HistorySlider from '@/components/HistorySlider.vue';
+import LoyaltyRules from '@/components/LoyaltyRules.vue';
+import MenuSlider from '@/components/MenuSlider.vue';
 import CreditCard from '@/components/UI/CreditCard.vue';
+import RubberList from '@/components/UI/RubberList.vue';
 import VIcon from '@/components/UI/VIcon.vue';
 import { useToggle } from '@/composables/UI';
+import { mockHistories } from '@/composables/useHistories/models';
 import { $confirm } from '@/plugins/confirmation.ts';
 import { useUserStore } from '@/store/userStore.ts';
 
 const userStore = useUserStore();
 const $router = useRouter();
-const { show: showQr, open: openQr } = useToggle();
+
+const { show: showRules, open: openRules } = useToggle();
+const { show: showMenu, open: openMenu } = useToggle();
 
 const advantages = [
-  { title: 'Резерв', text: 'Забронировать', icon: calendar, link: 'https://t.me/Oblacko_10' },
-  { title: 'Доставка', text: 'Заказать домой', icon: delivery, link: 'https://eats.yandex.com/uz/r/oblako_1681733515?placeSlug=oblako' },
-  // { title: 'Друзья', text: 'Мои друзья', icon: users },
-  // { title: 'Лояльность', text: 'Правила бонусов', icon: aim },
+  { title: 'Доставка', icon: delivery, link: 'https://eats.yandex.com/uz/r/oblako_1681733515?placeSlug=oblako' },
+  { title: 'Резерв', icon: calendar, link: 'https://t.me/Oblacko_10' },
+  { title: 'Друзья', icon: users, action: () => $confirm.info({ title: 'confirmations.warning', subtitle: 'loyaltySystemInDev' }) },
+  { title: 'Меню', icon: menu, action: () => openMenu() },
+  { title: 'Правила', icon: aim, action: () => openRules() },
 ];
-
-const walletBalance = computed<number>(() => {
-  if (!userStore.userInfo) return 0;
-  return userStore.userInfo.walletBalances.reduce((total, wallet) => {
-    return total + wallet.balance;
-  }, 0);
-});
-
-const userCardNumber = computed(() => {
-  return userStore.userInfo?.cards[0]?.number ?? '';
-});
-
-const cardNumberPreview = computed(() => {
-  const strArr = userCardNumber.value.match(/.{1,4}/g) || [];
-  return strArr.join(' ');
-});
 
 const validThru = computed(() => {
   if (!userStore.userInfo) return '';
   const date = new Date(userStore.userInfo.whenRegistered.replace(' ', 'T'));
   date.setFullYear(date.getFullYear() + 1);
   const month = String(date.getMonth() + 1).padStart(2, '0');
-  const year = String(date.getFullYear()).slice(-2);
+  const year = date.getFullYear();
   return `${month}/${year}`;
 });
 
@@ -60,66 +51,44 @@ const logOut = async () => {
     <div class="greeting">
       <div class="details">
         <div class="font-24-r">
-          Привет, {{ userStore.userInfo.name }}!
+          Добро пожаловать, {{ userStore.userInfo.name }}
         </div>
-        <!-- <div class="font-16-r color-secondary">
-          Добро пожаловать в OBLACKO
-        </div> -->
       </div>
-      <Button :icon="logout" label="Выйти" size="small" icon-pos="right" severity="secondary" @click="logOut" />
+      <Button :icon="logout" outlined severity="secondary" @click="logOut" />
     </div>
 
-    <CreditCard :balance="walletBalance" :card-number="cardNumberPreview" :valid-thru="validThru" />
+    <CreditCard :balance="userStore.walletBalance" :card-number="userStore.cardNumberPreview" :valid-thru="validThru" />
 
-    <Button label="Показать код кассиру" fluid :icon="qr" @click="openQr" />
-
-    <div class="services">
-      <Card v-for="item in advantages" :key="item.title" style="position:relative;">
+    <RubberList :gap="1.6">
+      <Card
+        v-for="item in advantages"
+        :key="item.title"
+        style="position:relative"
+        @click="item.action"
+      >
         <template #content>
-          <div style="padding: .5rem;">
+          <div style="padding: .5rem" class="text-center">
             <VIcon :icon="item.icon" color="var(--primary-500)" :size="32" style="margin-bottom: 1rem" />
             <div class="font-14-r">
               {{ item.title }}
-            </div>
-            <div class="font-12-r" style="padding-top: .4rem">
-              {{ item.text }}
             </div>
           </div>
           <a v-if="item.link" :href="item.link" style="position: absolute; inset: 0" target="_blank" />
         </template>
       </Card>
+    </RubberList>
+
+    <div class="font-18-r">
+      Выгодные предложения
     </div>
 
-    <Dialog v-model:visible="showQr" modal header="Код для кассира">
-      <div class="qr-inner text-center">
-        <QrGenerator :string-for-qr="userCardNumber" />
+    <HistorySlider :slides="mockHistories" />
 
-        <div>
-          <div class="font-16-r" style="margin-bottom: .8rem">
-            Номер карты
-          </div>
-          <div class="font-14-l color-secondary">
-            {{ cardNumberPreview }}
-          </div>
-        </div>
+    <LoyaltyRules v-model="showRules" />
 
-        <Card>
-          <template #content>
-            <div class="font-12-r color-secondary">
-              Баланс
-            </div>
-            <div class="font-18-r" style="color: var(--primary-500); margin-top: 5px">
-              {{ walletBalance.toLocaleString('ru') }} баллов
-            </div>
-          </template>
-        </Card>
-      </div>
-      <template #footer>
-        <div class="font-14-l color-secondary text-center w-full">
-          Покажите этот код кассиру для списания баллов
-        </div>
-      </template>
-    </dialog>
+    <Dialog v-model:visible="showMenu" modal class="full-dialog" header="Меню">
+      <MenuSlider />
+    </Dialog>
   </div>
 </template>
 
@@ -130,19 +99,12 @@ const logOut = async () => {
   align-items: center;
   justify-content: space-between;
   :deep(.p-button) {
-    gap: .5rem;
-    padding-left: 1.4rem;
+    padding-left: .4rem;
   }
   :deep(svg) {
     height: 2rem;
     width: 2rem;
   }
-}
-
-.qr-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
 }
 
 .main {
@@ -153,8 +115,14 @@ const logOut = async () => {
 }
 
 .services {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.6rem;
+  --gap: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  :deep(.p-card) {
+    box-sizing: border-box;
+    flex: 1 1 calc((100% - (var(--gap) * 2)) / 3);
+    min-width: 0;
+  }
 }
 </style>

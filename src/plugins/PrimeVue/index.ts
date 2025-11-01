@@ -118,12 +118,13 @@ const customPreset = definePreset(Aura, {
 
       dark: {
         formField: {
-          background: 'var(--form-field-bg)',
+          background: 'transparent',
           color: 'var(--white)',
           disabledColor: 'var(--white)',
           disabledBackground: '{zinc.800}',
           placeholderColor: '{neutral.400}',
-          borderColor: 'color-mix(in srgb, var(--white), transparent 90%)',
+          // borderColor: 'color-mix(in srgb, var(--white), transparent 90%)',
+          borderColor: 'var(--form-field-bg)',
           hoverBorderColor: 'var(--primary-800)',
           focusBorderColor: 'var(--primary-500)',
           // @ts-expect-error next-line

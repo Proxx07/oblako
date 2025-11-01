@@ -1,14 +1,11 @@
 import type { IGuest } from '@/composables/useAuth/types';
 import { computed, ref } from 'vue';
-import { useRouter } from 'vue-router';
 import $axios from '@/api';
 import { useFetchStates } from '@/composables/UI';
 import { setPostBody } from '@/composables/useAuth/models';
 import { useUserStore } from '@/store/userStore.ts';
 
 export const useRegistration = () => {
-  const $router = useRouter();
-
   const { loading } = useFetchStates();
   const userStore = useUserStore();
 
@@ -78,8 +75,8 @@ export const useRegistration = () => {
 
     await getCustomer();
 
-    if (!userStore.userInfo?.id) return;
-    await $router.push({ name: 'main' });
+    return userStore.userInfo?.id;
+    // await $router.push({ name: 'main' });
   };
 
   return {

@@ -8,10 +8,15 @@ export default {
   month: 'месяц',
 
   auth: {
-
     ageQuestion: 'Вам есть 18?',
     serviceAge: 'Сервис предназначен для лиц достигших 18 лет',
     ageConfirm: 'Мне есть 18',
+
+    createAccount: 'Создайте аккаунт, чтобы начать',
+    setYourName: 'Пожалуйста, укажите ваши имя и фамилию',
+
+    setRegInfo: 'Укажите данные для регистрации',
+    fillRequiredInfo: 'Пожалуйста, заполните необходимую информацию',
 
     login: 'Войдите в ваш аккаунт',
     enterPhone: 'Введите ваш номер телефона',
@@ -36,7 +41,7 @@ export default {
     male: 'Мужской',
     female: 'Женский',
     email: 'Email',
-    phoneNumber: 'Номер телефона',
+    phoneNumber: 'Телефон',
     createAccount: 'Создать аккаунт',
   },
 
@@ -46,6 +51,9 @@ export default {
     accept: 'Ок',
     reject: 'Отменить',
   },
+
+  loyaltySystemInDev: 'Программа лояльности находится в разработке',
+  pageInDev: 'Раздел находится в разработке',
 
   logout: 'Вы действительно хотите выйти из аккаунта?',
 
