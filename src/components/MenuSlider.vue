@@ -2,7 +2,7 @@
 import { Dialog } from 'primevue';
 import { ref } from 'vue';
 
-const menuPdfPath = '/src/assets/menu.pdf';
+const menuPdfPath = '/menu.pdf';
 
 const menuPreview = '/oblaco-menu-1.jpg';
 const showPdfDialog = ref(false);
