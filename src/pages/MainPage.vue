@@ -2,7 +2,7 @@
 import { Button, Card, Dialog } from 'primevue';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { aim, calendar, delivery, logout, menu, rules, users } from '@/assets/icons';
+import { calendar, delivery, logout, menu, rules, users } from '@/assets/icons';
 import HistorySlider from '@/components/HistorySlider.vue';
 import LoyaltyRules from '@/components/LoyaltyRules.vue';
 import MenuSlider from '@/components/MenuSlider.vue';
