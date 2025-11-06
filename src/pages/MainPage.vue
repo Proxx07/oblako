@@ -2,7 +2,7 @@
 import { Button, Card, Dialog } from 'primevue';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { aim, calendar, delivery, logout, menu, users } from '@/assets/icons';
+import { aim, calendar, delivery, logout, menu, rules, users } from '@/assets/icons';
 import HistorySlider from '@/components/HistorySlider.vue';
 import LoyaltyRules from '@/components/LoyaltyRules.vue';
 import MenuSlider from '@/components/MenuSlider.vue';
@@ -25,7 +25,7 @@ const advantages = [
   { title: 'Резерв', icon: calendar, link: 'https://t.me/oblacko_tashkent' },
   { title: 'Друзья', icon: users, action: () => $confirm.info({ title: 'confirmations.warning', subtitle: 'loyaltySystemInDev' }) },
   { title: 'Меню', icon: menu, action: () => openMenu() },
-  { title: 'Правила', icon: aim, action: () => openRules() },
+  { title: 'Правила', icon: rules, action: () => openRules() },
 ];
 
 const validThru = computed(() => {

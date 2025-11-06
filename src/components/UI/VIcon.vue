@@ -32,7 +32,7 @@ span {
   color: v-bind(colorVal);
   background: v-bind(bg);
   padding: v-bind(pa);
-  border-radius: var(--radius-round);
+  // border-radius: var(--radius-round);
   :deep(svg) {
     width: v-bind(iconSize);
     height: v-bind(iconSize);

@@ -41,10 +41,12 @@ import profile from './profile.svg?raw';
 
 import qr from './qr.svg?raw';
 import reload from './reload.svg?raw';
+import rules from './rules.svg?raw';
 import shieldIcon from './shieldIcon.svg?raw';
 import star from './star.svg?raw';
 import warning from './status/warning.svg?raw';
 import user from './user.svg?raw';
+
 import users from './users.svg?raw';
 
 import uzcard from './uzcard.svg?raw';
@@ -83,6 +85,7 @@ export {
   profile,
   qr,
   reload,
+  rules,
   shieldIcon,
   star,
   user,
