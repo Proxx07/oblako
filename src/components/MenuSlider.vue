@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Carousel, Pagination, Slide } from 'vue3-carousel';
 
-const open = (link: string) => {
-  window.open(link);
-};
+// const open = (link: string) => {
+//   window.open(link);
+// };
 
 const slides = ['/oblaco-menu-1.jpg', '/oblaco-menu-2.jpg'];
 </script>
