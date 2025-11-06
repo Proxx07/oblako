@@ -3,7 +3,7 @@ const menuPdfPath = '/menu.pdf#zoom=175';
 </script>
 
 <template>
-  <div style="height: 100vh;">
+  <div style="height: 100%;">
     <object
       :data="menuPdfPath"
       type="application/pdf"
