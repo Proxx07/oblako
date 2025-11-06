@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { Image } from 'primevue';
 import { Carousel, Pagination, Slide } from 'vue3-carousel';
 
-// const open = (link: string) => {
-//   window.open(link);
-// };
+const open = (link: string) => {
+  window.open(link);
+};
 
 const slides = ['/oblaco-menu-1.jpg', '/oblaco-menu-2.jpg'];
 </script>
@@ -13,14 +12,7 @@ const slides = ['/oblaco-menu-1.jpg', '/oblaco-menu-2.jpg'];
   <Carousel class="slider" :items-to-show="1" :wrap-around="true" :autoplay="6000">
     <Slide v-for="slide in slides" :key="slide">
       <!-- <img :src="slide" @click="open(slide)"> -->
-      <Image
-        :src="slide" preview width="300" :pt="{
-          image: {
-          },
-          root: {
-          },
-        }"
-      />
+      <img :src="slide">
     </Slide>
     <template #addons>
       <Pagination />
