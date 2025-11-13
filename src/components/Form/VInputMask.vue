@@ -37,6 +37,7 @@ const maskInputHandler = (event: CustomEvent<MaskaDetail>) => {
       :disabled="loading || props.disabled"
       :readonly="props.readonly"
       :class="{ 'color-secondary': props.readonly }"
+      inputmode="numeric"
       @maska="maskInputHandler"
     />
   </FormLabel>
