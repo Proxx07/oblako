@@ -10,7 +10,7 @@
 
 <template>
   <div class="menu-container">
-    <iframe src="/menu.pdf" class="menu-pdf" />
+    <embed src="/menu.pdf" type="application/pdf" class="menu-pdf" />
   </div>
 
   <!-- <Carousel class="slider" :items-to-show="1" :wrap-around="true" :autoplay="6000">
@@ -28,15 +28,12 @@
 .menu-container {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: auto;
 }
 
 .menu-pdf {
   width: 100%;
   height: 100%;
-  border: none;
   min-height: 600px;
 }
 </style>
