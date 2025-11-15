@@ -2,7 +2,7 @@
 import { Button, Card, Dialog } from 'primevue';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { calendar, delivery, logout, menu, rules, users } from '@/assets/icons';
+import { calendar, delivery, logout, menu, rules, users, wolt, yandexEda } from '@/assets/icons';
 import HistorySlider from '@/components/HistorySlider.vue';
 import LoyaltyRules from '@/components/LoyaltyRules.vue';
 import MenuSlider from '@/components/MenuSlider.vue';
@@ -22,8 +22,8 @@ const { show: showMenu, open: openMenu } = useToggle();
 const { show: showDelivery, open: openDelivery } = useToggle();
 
 const deliveryOptions = [
-  { name: 'Яндекс.Еда', icon: delivery, link: 'https://eats.yandex.com/uz/r/oblako_1681733515?placeSlug=oblako' },
-  { name: 'Wolt', icon: delivery, link: 'https://wolt.com/uz/uzb/tashkent/restaurant/oblako-tash' },
+  { name: 'Яндекс.Еда', icon: yandexEda, link: 'https://eats.yandex.com/uz/r/oblako_1681733515?placeSlug=oblako' },
+  { name: 'Wolt', icon: wolt, link: 'https://wolt.com/uz/uzb/tashkent/restaurant/oblako-tash' },
 ];
 
 const advantages = [

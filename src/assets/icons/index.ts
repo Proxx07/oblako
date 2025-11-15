@@ -51,6 +51,9 @@ import users from './users.svg?raw';
 
 import uzcard from './uzcard.svg?raw';
 
+import wolt from './wolt.svg?raw';
+import yandexEda from './yandex-eda.svg?raw';
+
 export {
   address,
   aim,
@@ -92,4 +95,6 @@ export {
   users,
   uzcard,
   warning,
+  wolt,
+  yandexEda,
 };
