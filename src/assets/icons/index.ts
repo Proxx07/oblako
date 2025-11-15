@@ -52,7 +52,7 @@ import users from './users.svg?raw';
 import uzcard from './uzcard.svg?raw';
 
 import wolt from './wolt.svg?raw';
-import yandexEda from './yandex-eda.svg?raw';
+import yandexEda from './yandex-eats.svg?raw';
 
 export {
   address,
