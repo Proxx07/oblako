@@ -22,7 +22,7 @@ const { show: showMenu, open: openMenu } = useToggle();
 const { show: showDelivery, open: openDelivery } = useToggle();
 
 const deliveryOptions = [
-  { name: 'Яндекс.Еда', icon: yandexEda, link: 'https://eats.yandex.com/uz/r/oblako_1681733515?placeSlug=oblako' },
+  { name: 'Яндекс.Еда', icon: yandexEda, link: 'https://eats.yandex.com/uz/r/oblako_1681733515?placeSlug=oblako', color: '#fce000' },
   { name: 'Wolt', icon: wolt, link: 'https://wolt.com/uz/uzb/tashkent/restaurant/oblako-tash' },
 ];
 
@@ -110,7 +110,7 @@ const logOut = async () => {
       <RubberList :gap="1.2" class="delivery-list">
         <Card v-for="item in deliveryOptions" :key="item.name">
           <template #content>
-            <VIcon :icon="item.icon" color="var(--primary-500)" />
+            <VIcon :icon="item.icon" :color="item.color ?? 'var(--primary-500)'" :size="32" />
             <div class="font-14-l">
               {{ item.name }}
             </div>
