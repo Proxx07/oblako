@@ -110,7 +110,7 @@ const logOut = async () => {
       <RubberList :gap="1.2" class="delivery-list">
         <Card v-for="item in deliveryOptions" :key="item.name">
           <template #content>
-            <VIcon :icon="item.icon" :color="item.color ?? 'var(--primary-500)'" :size="32" />
+            <VIcon :icon="item.icon" :color="item.color ?? 'var(--primary-500)'" :size="128" />
             <div class="font-14-l">
               {{ item.name }}
             </div>
