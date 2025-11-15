@@ -96,7 +96,17 @@ const logOut = async () => {
       <MenuSlider />
     </Dialog>
 
-    <Dialog v-model:visible="showDelivery" modal class="full-dialog" header="Доставка">
+    <Dialog v-model:visible="showDelivery" modal class="full-dialog">
+      <template #header>
+        <div class="delivery-top">
+          <div class="font-24-r">
+            Доставка
+          </div>
+          <div class="note-text">
+            закажите доставку любым удобным способом
+          </div>
+        </div>
+      </template>
       <RubberList :gap="1.2" class="delivery-list">
         <Card v-for="item in deliveryOptions" :key="item.name">
           <template #content>
@@ -144,6 +154,26 @@ const logOut = async () => {
     flex: 1 1 calc((100% - (var(--gap) * 2)) / 3);
     min-width: 0;
   }
+}
+
+:deep(.full-dialog) {
+  .p-dialog-header {
+    .delivery-top {
+      .font-24-r {
+        color: inherit;
+        font: var(--font-24-r);
+      }
+    }
+  }
+}
+
+.delivery-top {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  margin-right: auto;
+  padding-left: 1.6rem;
 }
 
 .delivery-list {
