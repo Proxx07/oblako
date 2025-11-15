@@ -19,9 +19,15 @@ const $router = useRouter();
 
 const { show: showRules, open: openRules } = useToggle();
 const { show: showMenu, open: openMenu } = useToggle();
+const { show: showDelivery, open: openDelivery } = useToggle();
+
+const deliveryOptions = [
+  { name: 'Яндекс.Еда', icon: delivery, link: 'https://eats.yandex.com/uz/r/oblako_1681733515?placeSlug=oblako' },
+  { name: 'Wolt', icon: delivery, link: 'https://wolt.com/uz/uzb/tashkent/restaurant/oblako-tash' },
+];
 
 const advantages = [
-  { title: 'Доставка', icon: delivery, link: 'https://eats.yandex.com/uz/r/oblako_1681733515?placeSlug=oblako' },
+  { title: 'Доставка', icon: delivery, action: () => openDelivery() },
   { title: 'Резерв', icon: calendar, link: 'https://t.me/oblacko_tashkent' },
   { title: 'Друзья', icon: users, action: () => $confirm.info({ title: 'confirmations.warning', subtitle: 'loyaltySystemInDev' }) },
   { title: 'Меню', icon: menu, action: () => openMenu() },
@@ -64,7 +70,7 @@ const logOut = async () => {
         v-for="item in advantages"
         :key="item.title"
         style="position:relative"
-        @click="item.action"
+        @click="item.action || undefined"
       >
         <template #content>
           <div style="padding: .5rem" class="text-center">
@@ -88,6 +94,20 @@ const logOut = async () => {
 
     <Dialog v-model:visible="showMenu" modal class="full-dialog" header="Меню">
       <MenuSlider />
+    </Dialog>
+
+    <Dialog v-model:visible="showDelivery" modal class="full-dialog" header="Доставка">
+      <RubberList :gap="1.2" class="delivery-list">
+        <Card v-for="item in deliveryOptions" :key="item.name">
+          <template #content>
+            <VIcon :icon="item.icon" color="var(--primary-500)" />
+            <div class="font-14-l">
+              {{ item.name }}
+            </div>
+            <a v-if="item.link" :href="item.link" target="_blank" />
+          </template>
+        </Card>
+      </RubberList>
     </Dialog>
   </div>
 </template>
@@ -123,6 +143,25 @@ const logOut = async () => {
     box-sizing: border-box;
     flex: 1 1 calc((100% - (var(--gap) * 2)) / 3);
     min-width: 0;
+  }
+}
+
+.delivery-list {
+  :deep(.p-card-body) {
+    padding: 2.4rem;
+    position: relative;
+    text-align: center;
+    a {
+      position: absolute;
+      inset: 0;
+    }
+    .p-card-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+    }
   }
 }
 </style>
