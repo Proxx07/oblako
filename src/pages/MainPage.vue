@@ -69,8 +69,8 @@ const logOut = async () => {
       <Card
         v-for="item in advantages"
         :key="item.title"
-        style="position:relative"
-        @click="item.action || undefined"
+        :style="{ position: 'relative', cursor: item.action ? 'pointer' : 'default' }"
+        @click="item.action?.()"
       >
         <template #content>
           <div style="padding: .5rem" class="text-center">
