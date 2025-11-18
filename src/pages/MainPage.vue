@@ -36,11 +36,12 @@ const advantages = [
 
 const validThru = computed(() => {
   if (!userStore.userInfo) return '';
-  const date = new Date(userStore.userInfo.whenRegistered.replace(' ', 'T'));
-  date.setFullYear(date.getFullYear() + 1);
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const year = date.getFullYear();
-  return `${month}/${year}`;
+  // const date = new Date(userStore.userInfo.whenRegistered.replace(' ', 'T'));
+  // date.setFullYear(date.getFullYear() + 1);
+  // const month = String(date.getMonth() + 1).padStart(2, '0');
+  // const year = date.getFullYear();
+  // return `${month}/${year}`;
+  return '31/12/2025';
 });
 
 const logOut = async () => {

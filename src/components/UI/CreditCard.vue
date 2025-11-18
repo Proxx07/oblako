@@ -18,9 +18,9 @@ defineProps<{
 
         <div class="colspan-2">
           <div class="font-12-r text-center">
-            Балланс
+            Баланс
           </div>
-          <div class="text-center" style="font-family: var(--primary-font-r); font-size: 6.4rem; font-weight: 700;">
+          <div class="text-center" style="font-family: var(--primary-font-r); font-size: 4rem; font-weight: 700;">
             {{ balance.toLocaleString('ru-RU') }}
           </div>
           <div class="font-12-r text-center">
@@ -36,7 +36,7 @@ defineProps<{
           Действует до
         </div>
 
-        <div class="font-16-b">
+        <div class="font-14-b">
           {{ cardNumber }}
         </div>
         <div class="font-16-b text-right">
