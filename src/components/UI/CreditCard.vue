@@ -39,7 +39,7 @@ defineProps<{
         <div class="font-14-b">
           {{ cardNumber }}
         </div>
-        <div class="font-16-b text-right">
+        <div class="font-14-b text-right">
           {{ validThru }}
         </div>
       </div>
