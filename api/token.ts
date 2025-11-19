@@ -3,11 +3,11 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 export default async (_: VercelRequest, res: VercelResponse) => {
   try {
     // eslint-disable-next-line node/prefer-global/process
-    const response = await fetch(`${process.env.VITE_API_URL}/api/Identity/login`, {
+    const response = await fetch(`${process.env.VITE_API_LINK}/api/Identity/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       // eslint-disable-next-line node/prefer-global/process
-      body: JSON.stringify({ login: process.env.VITE_API_LOGIN, password: process.env.VITE_API_LOGIN }),
+      body: JSON.stringify({ login: process.env.VITE_API_USER, password: process.env.VITE_API_LOGIN }),
     });
     const result = await response.json() as { accessToken: string };
     if (result.accessToken) {

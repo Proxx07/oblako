@@ -14,13 +14,12 @@ export const buildPlugins = (options: BuildOptions): PluginOption[] => {
       configureServer(server) {
         server.middlewares.use('/token', async (_, res) => {
           try {
-            const response = await fetch(`${options.env.VITE_API_URL}/api/Identity/login`, {
+            const response = await fetch(`${options.env.VITE_API_LINK}/api/Identity/login`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ login: options.env.VITE_API_LOGIN, password: options.env.VITE_API_PASSWORD }),
+              body: JSON.stringify({ login: options.env.VITE_API_USER, password: options.env.VITE_API_PASSWORD }),
             });
             const result = await response.json() as { accessToken: string };
-            console.log(result);
             if (result.accessToken) {
               res.setHeader('Content-Type', 'application/json');
               res.setHeader('Set-Cookie', [`token=${result.accessToken}; Path=/; SameSite=Strict; Secure`]);
