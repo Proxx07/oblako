@@ -25,7 +25,7 @@ $axios.interceptors.request.use(
 
 $axios.interceptors.response.use(
   (response) => {
-    if (response.data.error && typeof response.data.error === 'string') {
+    if (response.data.error && typeof response.data.error === 'string' && !response.config.noToast) {
       const $toast = useToastStore();
       $toast.error(response.data.error);
     }
@@ -41,10 +41,15 @@ $axios.interceptors.response.use(
       if (result.success && error.config) return $axios.request(error.config);
     }
 
-    if (error) {
-      const message = error.response?.data?.message || error.message;
+    if (error && !error.config?.noToast) {
       const $toast = useToastStore();
-      $toast.error(message);
+      const message = error.response?.data?.message || error.message;
+      if (error.response?.data?.errorCode === 'OTP_VERIFICATION_REQUIRED') {
+        $toast.warning(message);
+      }
+      else {
+        $toast.error(message);
+      }
     }
 
     if (error?.response?.config.loading) error.response.config.loading.value = false;

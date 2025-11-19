@@ -14,8 +14,8 @@ export const checkActiveUser = async () => {
   const userStore = useUserStore();
   if (userStore.storedPhone) {
     const { data, error }
-        = await $axios.post<IGuest>('/api/Customer/GetCustomerInfo/', setPostBody(userStore.storedPhone));
-    userStore.setUserInfo(data);
+        = await $axios.post<IGuest>('/api/Customer/GetCustomerInfo/', setPostBody(userStore.storedPhone), { noToast: true });
+    if (data) userStore.setUserInfo(data);
     name = !data || error ? 'auth' : 'main';
   }
 

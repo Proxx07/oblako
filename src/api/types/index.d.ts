@@ -8,6 +8,7 @@ interface AxiosResult<T = any> extends AxiosResponse<T>{
 declare module 'axios' {
   export interface AxiosRequestConfig {
     loading?: Ref<boolean>;
+    noToast?: boolean;
   }
 }
 

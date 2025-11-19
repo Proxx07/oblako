@@ -2,7 +2,9 @@ export const setPostBody = (phone: string) => {
   return {
     phone: phone[0] === '+' ? phone : `+${phone}`,
     type: 'phone',
-    telegramId: 'TG_ID',
+    // eslint-disable-next-line ts/ban-ts-comment
+    // @ts-expect-error
+    telegramId: `${window?.Telegram?.WebApp?.initDataUnsafe?.user?.id || ''}`,
   };
 };
 
