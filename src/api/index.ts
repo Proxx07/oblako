@@ -20,6 +20,7 @@ $axios.interceptors.request.use(
     }
     return config;
   },
+
 );
 
 $axios.interceptors.response.use(
@@ -34,19 +35,16 @@ $axios.interceptors.response.use(
     return response;
   },
 
-  async (error: AxiosError) => {
+  async (error: AxiosError<{ message: string, errorCode: string }>) => {
     if (error.status === 401) {
       const result = await fetchToken();
       if (result.success && error.config) return $axios.request(error.config);
     }
 
     if (error) {
-      const message = error.response?.data && typeof error.response.data === 'string' ? error.response.data : error.message;
-      const isErrorMessagePhone = (error?.response?.data as { message: string })?.message.includes('no user with phone');
-      if (!isErrorMessagePhone) {
-        const $toast = useToastStore();
-        $toast.error(message);
-      }
+      const message = error.response?.data?.message || error.message;
+      const $toast = useToastStore();
+      $toast.error(message);
     }
 
     if (error?.response?.config.loading) error.response.config.loading.value = false;

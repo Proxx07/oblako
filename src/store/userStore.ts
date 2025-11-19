@@ -6,7 +6,7 @@ import { computed, ref } from 'vue';
 export const useUserStore = defineStore('user-store', () => {
   const userInfo = ref<IGuest>();
 
-  const phoneForRegistration = ref('+998934823461');
+  const phoneForRegistration = ref('');
   const storedPhone = useLocalStorage('phone', '');
 
   const userCardNumber = computed(() => {

@@ -14,7 +14,7 @@ export const checkActiveUser = async () => {
   const userStore = useUserStore();
   if (userStore.storedPhone) {
     const { data, error }
-        = await $axios.post<IGuest>('/api/1/loyalty/iiko/customer/info', setPostBody(userStore.storedPhone));
+        = await $axios.post<IGuest>('/api/Customer/GetCustomerInfo/', setPostBody(userStore.storedPhone));
     userStore.setUserInfo(data);
     name = !data || error ? 'auth' : 'main';
   }

@@ -33,7 +33,7 @@ export const useAuth = () => {
     const { data: createData, error: createError } = await $axios.post<{ id: string }>('/api/1/loyalty/iiko/customer/create_or_update', body, { loading });
     if (createData && !createError) {
       const { data, error }
-        = await $axios.post<IGuest>('/api/1/loyalty/iiko/customer/info', setPostBody(modelPhoneNumber.value), { loading });
+        = await $axios.post<IGuest>('/api/Customer/GetCustomerInfo', setPostBody(modelPhoneNumber.value), { loading });
       if (data && !error) {
         userStore.setUserInfo(data);
         userStore.setStoredPhone(modelPhoneNumber.value);
@@ -45,7 +45,7 @@ export const useAuth = () => {
   const getCustomerInfo = async () => {
     if (!isPhoneValid.value || loading.value) return;
     const { data, error }
-        = await $axios.post<IGuest>('/api/1/loyalty/iiko/customer/info', setPostBody(modelPhoneNumber.value), { loading });
+        = await $axios.post<IGuest>('/api/Customer/GetCustomerInfo', setPostBody(modelPhoneNumber.value), { loading });
 
     if (!data || error) {
       userStore.setRegistrationPhone(modelPhoneNumber.value);

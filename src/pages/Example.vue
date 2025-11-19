@@ -60,7 +60,7 @@ const handleSubmit = () => {
 const { modeModel, modes } = useThemeMode();
 
 const getCustomerInfo = async () => {
-  const { data, error } = await $axios.post('/api/1/loyalty/iiko/customer/info', {
+  const { data, error } = await $axios.post('/api/Customer/GetCustomerInfo', {
     phone: '+998332531966',
     type: 'phone',
     organizationId: 'e7db68f3-1068-4d79-96b3-fb20748d4623',

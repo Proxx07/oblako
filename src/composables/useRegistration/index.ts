@@ -54,7 +54,7 @@ export const useRegistration = () => {
 
   const getCustomer = async () => {
     const { data: guest, error: guestError }
-        = await $axios.post<IGuest>('/api/1/loyalty/iiko/customer/info', setPostBody(userStore.phoneForRegistration), { loading });
+        = await $axios.post<IGuest>('/api/Customer/GetCustomerInfo', setPostBody(userStore.phoneForRegistration), { loading });
     if (!guest || guestError) return;
     userStore.setUserInfo(guest);
   };
