@@ -7,7 +7,7 @@ export default async (_: VercelRequest, res: VercelResponse) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       // eslint-disable-next-line node/prefer-global/process
-      body: JSON.stringify({ login: process.env.VITE_API_USER, password: process.env.VITE_API_LOGIN }),
+      body: JSON.stringify({ login: process.env.VITE_API_USER, password: process.env.VITE_API_PASSWORD }),
     });
     const result = await response.json() as { accessToken: string };
     if (result.accessToken) {
