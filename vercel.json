@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://api-ru.iiko.services/api/:path*"
+      "destination": "https://jinada.beecrouse.uz/api/:path*"
     },
     { "source": "/token", "destination": "/api/token" },
     { "source": "/(.*)", "destination": "/" }
