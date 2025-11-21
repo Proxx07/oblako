@@ -14,15 +14,17 @@ export const buildPlugins = (options: BuildOptions): PluginOption[] => {
       configureServer(server) {
         server.middlewares.use('/token', async (_, res) => {
           try {
-            const response = await fetch(`${options.env.VITE_API_URL}/api/1/access_token`, {
+            const response = await fetch(`${options.env.VITE_API_LINK}/api/Identity/login`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ apiLogin: options.env.VITE_API_LOGIN }),
+              body: JSON.stringify({ login: options.env.VITE_API_USER, password: options.env.VITE_API_PASSWORD }),
             });
-            const result = await response.json();
-            res.setHeader('Content-Type', 'application/json');
-            res.setHeader('Set-Cookie', [`token=${result.token}; Path=/; SameSite=Strict; Secure`]);
-            res.end(JSON.stringify({ success: true }));
+            const result = await response.json() as { accessToken: string };
+            if (result.accessToken) {
+              res.setHeader('Content-Type', 'application/json');
+              res.setHeader('Set-Cookie', [`token=${result.accessToken}; Path=/; SameSite=Strict; Secure`]);
+            }
+            res.end(JSON.stringify({ success: Boolean(result.accessToken) }));
           }
 
           // eslint-disable-next-line unused-imports/no-unused-vars

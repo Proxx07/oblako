@@ -7,7 +7,7 @@ export const buildServer = (options: BuildOptions): ServerOptions => {
     port: options.port,
     proxy: {
       '/api': {
-        target: options.env.VITE_API_URL,
+        target: options.env.VITE_API_LINK,
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, '/api/'),
       },

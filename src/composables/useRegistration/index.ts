@@ -28,7 +28,7 @@ export const useRegistration = () => {
       cardTrack: !edit.value ? cardNumber : (userStore.userInfo?.cards[0]?.number ?? cardNumber),
       email: email.value,
       sex: sex.value,
-      organizationId: import.meta.env.VITE_API_ORG_ID,
+      // organizationId: import.meta.env.VITE_API_ORG_ID,
     };
   };
 
@@ -54,7 +54,7 @@ export const useRegistration = () => {
 
   const getCustomer = async () => {
     const { data: guest, error: guestError }
-        = await $axios.post<IGuest>('/api/1/loyalty/iiko/customer/info', setPostBody(userStore.phoneForRegistration), { loading });
+        = await $axios.post<IGuest>('/api/Customer/GetCustomerInfo', setPostBody(userStore.phoneForRegistration), { loading });
     if (!guest || guestError) return;
     userStore.setUserInfo(guest);
   };
@@ -62,16 +62,9 @@ export const useRegistration = () => {
   const createCustomer = async () => {
     if (loading.value) return;
     const { data, error }
-        = await $axios.post<{ id: string }>('/api/1/loyalty/iiko/customer/create_or_update', setRegistrationBody(), { loading });
+        = await $axios.post<{ id: string }>('/api/Customer/CreateOrUpdateCustomer', setRegistrationBody(), { loading });
     if (!data || error || edit.value) return;
     userStore.setStoredPhone(userStore.phoneForRegistration);
-    if (data.id) {
-      await $axios.post('/api/1/loyalty/iiko/customer_category/add', {
-        customerId: data.id,
-        categoryId: '2a5d42e7-c7a8-4a39-aa3f-9a29453b1bc7',
-        organizationId: import.meta.env.VITE_API_ORG_ID,
-      }, { loading });
-    }
 
     await getCustomer();
 
